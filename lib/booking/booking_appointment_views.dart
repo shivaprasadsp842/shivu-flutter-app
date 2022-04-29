@@ -16,8 +16,9 @@ class BookingAppointmentView extends StatelessWidget {
       home:Scaffold(
         //backgroundColor:  Color(0x2EAEABAB),
         //backgroundColor:  Colors.black12,
+       // extendBodyBehindAppBar: true,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(150.0), // here the desired height
+          preferredSize: Size.fromHeight(200.0), // here the desired height
           child:  AppBar(
             backgroundColor: Colors.white54,
             elevation: 0,
@@ -33,7 +34,7 @@ class BookingAppointmentView extends StatelessWidget {
             //Text('How it works?'),
             flexibleSpace: Image(
               image: AssetImage('assets/arjun.png'),
-              height: 200,
+              height: 250,
               fit: BoxFit.cover,
             ),
             //centerTitle: true,
@@ -177,7 +178,13 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
         child: IntrinsicHeight(
         child:  Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),),
+              borderRadius: BorderRadius.circular(30),
+              color: Color(0xEEEEEEEE
+              ),
+              boxShadow: [BoxShadow(
+                color: Colors.grey,
+                blurRadius: 10.0,
+              ),]),
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
     //color: Colors.red,
     child:
@@ -224,26 +231,33 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
       ),
       // Container(
       // width: 200.0,
-      Align(
-        alignment: Alignment.centerLeft,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(00, 0, 0, 0),
-          child:  Container(
-            height: 32.0,
-            // color: Colors.white,
-            //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
-            decoration: BoxDecoration(
-              //border: Border.all(color: Colors.black12, width: 1),
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-              //shape: BoxShape.circle,
-            ),
-            child:TextField(
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 10, 5),
+            child:   Container(
+              padding: const EdgeInsets.fromLTRB(0, 5, 10, 5),
+              height: 40.0,
+              width:double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black12, width: 1),
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+
+                //shape: BoxShape.circle,
+              ),
+              child:TextField(
               // readOnly: true,
               controller: dateController,
               decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.calendar_today, size: 20,),
-                  hintText: 'CHOOSE YOUR PREFERRED DATE'
+                  suffixIcon: Icon(Icons.calendar_today, size: 20, color: Colors.black,),
+                  hintText: 'CHOOSE YOUR PREFERRED DATE',
+                hintStyle: TextStyle(fontSize: 10),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white, width: 0.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderSide: BorderSide(width: 1,color: Colors.transparent),
+                ),
               ),
               onTap: () async {
                 var date =  await showDatePicker(
@@ -256,7 +270,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
             ),
           ),
         ),
-      ),
+
 
 
       Align(
@@ -284,7 +298,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                   child:  Container(
                     height: 32.0,
                     // width:200,
-                    //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black12, width: 1),
                       borderRadius: BorderRadius.circular(10),
@@ -298,7 +312,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                       isExpanded: true,
                       iconSize: 26,
                       elevation: 10,
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black, fontSize: 10),
                       underline: Container(
                         height: 2,
                         color: Colors.transparent,
@@ -327,7 +341,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                   child:  Container(
                     height: 32.0,
                     // width:200,
-                    //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black12, width: 1),
                       borderRadius: BorderRadius.circular(10),
@@ -341,7 +355,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                       isExpanded: true,
                       iconSize: 26,
                       elevation: 10,
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black, fontSize: 10),
                       underline: Container(
                         height: 2,
                         color: Colors.transparent,
@@ -390,7 +404,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
               child:  Container(
                 height: 32.0,
                 // width:200,
-                //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+                padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.black12, width: 1),
                   borderRadius: BorderRadius.circular(10),
@@ -404,7 +418,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                   isExpanded: true,
                   iconSize: 26,
                   elevation: 10,
-                  style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black, fontSize: 10),
                   underline: Container(
                     height: 2,
                     color: Colors.transparent,
@@ -484,7 +498,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
           child:  Container(
             height: 32.0,
             // width:200,
-            //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12, width: 1),
               borderRadius: BorderRadius.circular(10),
@@ -498,7 +512,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
               isExpanded: true,
               iconSize: 26,
               elevation: 10,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black, fontSize: 10 ),
               underline: Container(
                 height: 2,
                 color: Colors.transparent,
@@ -608,7 +622,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                   child:  Container(
                     height: 32.0,
                     // width:200,
-                    //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black12, width: 1),
                       borderRadius: BorderRadius.circular(10),
@@ -622,7 +636,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                       isExpanded: true,
                       iconSize: 26,
                       elevation: 10,
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.black, fontSize: 10),
                       underline: Container(
                         height: 2,
                         color: Colors.transparent,
@@ -694,7 +708,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(00, 10, 10, 10),
           child:  Container(
-            height: 32.0,
+            height: 45.0,
 
             child: TextField(
               controller: _googleLinkController,
@@ -741,7 +755,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                     padding: const EdgeInsets.fromLTRB(15, 10, 45, 10),
                     child: Text(
                       "Bringing Anyone With You ?", style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 12,
                       color: Colors.black54,
                       //fontWeight: FontWeight.bold,
                     ),
@@ -820,9 +834,9 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(00, 5, 00, 05),
           child:  Container(
-            height: 32.0,
+            height: 40.0,
             // width:200,
-            //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12, width: 1),
               borderRadius: BorderRadius.circular(10),
@@ -836,7 +850,7 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
               isExpanded: true,
               iconSize: 26,
               elevation: 10,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black, fontSize: 10),
               underline: Container(
                 height: 2,
                 color: Colors.transparent,
@@ -1016,7 +1030,10 @@ class _BookingCheckStatefulViewState extends State<BookingCheckStatefulView> {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black, // background
                   onPrimary: Colors.white, // foreground
-                  padding: const EdgeInsets.fromLTRB(40, 15, 50, 15),
+                  padding: const EdgeInsets.fromLTRB(70, 15, 70, 15),
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
                 ),
                 onPressed: () {
 

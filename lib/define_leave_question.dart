@@ -65,7 +65,7 @@ class _DefineLeaveQuestionState extends State<DefineLeaveQuestion> {
     return MaterialApp(
        //title: _title,
        home:Scaffold(
-      //   backgroundColor: Colors.black12,
+       backgroundColor: Color(0xeeeeeeee),
          appBar: AppBar(
            leading: InkWell(
              onTap: () {
@@ -184,13 +184,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
    @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: IntrinsicHeight(
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child:  Column(children: <Widget>[
 
       Align(
         alignment: Alignment.centerLeft,
         child: Container(
-          padding: const EdgeInsets.fromLTRB(30, 10, 45, 05),
+          padding: const EdgeInsets.fromLTRB(30, 0, 45, 05),
           child: Text(
             "Currency", style: TextStyle(
             fontSize: 12,
@@ -208,9 +209,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(30, 0, 45, 0),
           child:  Container(
-            height: 35.0,
+            height: 40.0,
             width:200,
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12, width: 1),
               borderRadius: BorderRadius.circular(10),
@@ -226,7 +227,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               elevation: 10,
               style: const TextStyle(color: Colors.black54),
               underline: Container(
-                height: 2,
+                height: 3,
                 color: Colors.transparent,
               ),
               onChanged: (String? newValue) {
@@ -264,10 +265,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(width: 20.0,),
+          SizedBox(width: 18.0,),
           new Flexible(
             child: Container(
-              padding: const EdgeInsets.fromLTRB(15, 05, 5, 05),
+              padding: const EdgeInsets.fromLTRB(15, 0, 5, 05),
               //  padding: const EdgeInsets.all(10),
               height: 40.0,
               //  width:350,
@@ -319,7 +320,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   style: const TextStyle(color: Colors.black54),
                   underline: Container(
                     height: 2,
-                    color: Colors.white,
+                    color: Colors.transparent,
                   ),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -413,7 +414,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
             ),
           ),
-          SizedBox(width: 0.0,),
+          SizedBox(width: 15.0,),
           new Flexible(
             child: new Text('Your Final OFFER Price ', style: TextStyle(),
 
@@ -424,14 +425,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ],
       ),
 
-
+        SizedBox(height: 5,),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           SizedBox(width: 10.0,),
           new Flexible(
             child: new  Container(
-              padding: const EdgeInsets.fromLTRB(25, 05, 10, 05),
+              padding: const EdgeInsets.fromLTRB(25, 0, 10, 05),
               //  padding: const EdgeInsets.all(10),
               height: 40.0,
               //width:350,
@@ -464,7 +465,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           SizedBox(width: 20.0,),
           new Flexible(
             child: new  Container(
-              padding: const EdgeInsets.fromLTRB(10, 05, 45, 05),
+              padding: const EdgeInsets.fromLTRB(0, 0, 45, 05),
               //  padding: const EdgeInsets.all(10),
               height: 40.0,
               // width:350,
@@ -517,7 +518,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
         ],
       ),
-      SizedBox(height: 15,),
+      SizedBox(height: 10,),
       Row(
         children: [
           Align(
@@ -525,13 +526,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(25, 0, 010, 0),
               child:  Container(
-                padding: const EdgeInsets.fromLTRB(10, 0, 0, 05),
-                height: 32.0,
+                padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
+                height: 35.0,
                 width:150,
                 decoration: BoxDecoration(
-                  //border: Border.all(color: Colors.black12, width: 1),
+                  //border: Border.all(color: Colors.red, width: 1),
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
+
                   //shape: BoxShape.circle,
                 ),
                 child:TextField(
@@ -539,7 +541,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   controller: startDateController,
                   decoration: InputDecoration(
                     hintText: 'CHOOSE DATE', hintStyle: TextStyle(fontSize: 15,),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 0.0),
+
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
+                      borderSide: BorderSide(width: 1,color: Colors.transparent),
+                    ),
                   ),
+                  style: const TextStyle(color: Colors.black54),
+
                   onTap: () async {
                     var date =  await showDatePicker(
                         context: context,
@@ -557,13 +569,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child:  Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child:  Container(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 05),
-                height: 32.0,
+                padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
+                height: 35.0,
                 width:150,
                 decoration: BoxDecoration(
-                  //border: Border.all(color: Colors.black12, width: 1),
+                  border: Border.all(color: Colors.black12, width: 1),
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
+
                   //shape: BoxShape.circle,
                 ),
                 child:TextField(
@@ -571,6 +584,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   controller: endDateController,
                   decoration: InputDecoration(
                     hintText: 'CHOOSE DATE', hintStyle: TextStyle(fontSize: 15,),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 0.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
+                      borderSide: BorderSide(width: 1,color: Colors.transparent),
+                    ),
                   ),
                   onTap: () async {
                     var date =  await showDatePicker(
@@ -610,7 +630,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     style: ElevatedButton.styleFrom(
     primary: Colors.black, // background
     onPrimary: Colors.white, // foreground
-    padding: const EdgeInsets.fromLTRB(110, 20, 110, 20),
+    padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
       shape: new RoundedRectangleBorder(
         borderRadius: new BorderRadius.circular(10.0),
       ),
@@ -625,7 +645,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     child: const Text('SAVE DETAILS',
     style: TextStyle(
     color:Colors.white,
-    fontSize:18,
+    fontSize:15,
 
     fontWeight: FontWeight.bold,
     ),

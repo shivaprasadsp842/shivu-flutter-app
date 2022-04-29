@@ -36,6 +36,7 @@ class _HomeViewState extends State<HomeView> {
   build(BuildContext context) {
     return Scaffold(
       //theme: new ThemeData(scaffoldBackgroundColor:  Color(0xFFEFEFEF)),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -49,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
           style: TextStyle(
             color: Colors.black54,
             fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontSize: 18,
           ),
         ),
         actions: [
@@ -69,8 +70,8 @@ class _HomeViewState extends State<HomeView> {
                 child: ClipOval(
                     child: Image(
                   image: new AssetImage("assets/img_2.png"),
-                  width: 40,
-                  height: 40,
+                  width: 35,
+                  height: 35,
                   color: null,
                   //fit: BoxFit.scaleDown,
                   alignment: Alignment.center,
@@ -99,20 +100,22 @@ class _HomeViewState extends State<HomeView> {
                       'Find your problem solver',
                       style: TextStyle(
                         fontSize: 20,
-                        color: Colors.grey,
+                        color: Color(0x7D000000),
                         //fontWeight:FontWeight.bold,
                       ),
                     )),
               ]),
-          Row(
+        Container(
+          padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+            child:  Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Container(
                     child: new Image(
-                  image: new AssetImage("assets/youtube.png"),
-                  width: 40,
+                  image: new AssetImage("assets/Group 707.png"),
+                   width: 40,
                   height: 40,
                   color: null,
                   fit: BoxFit.scaleDown,
@@ -120,11 +123,11 @@ class _HomeViewState extends State<HomeView> {
                 )),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Container(
                     child: new Image(
-                  image: new AssetImage("assets/twitter.png"),
-                  width: 40,
+                  image: new AssetImage("assets/Group 708.png"),
+                   width: 40,
                   height: 40,
                   color: null,
                   fit: BoxFit.scaleDown,
@@ -132,11 +135,11 @@ class _HomeViewState extends State<HomeView> {
                 )),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Container(
                     child: new Image(
-                  image: new AssetImage("assets/fb1.png"),
-                  width: 40,
+                  image: new AssetImage("assets/Group 709.png"),
+                   width: 40,
                   height: 40,
                   color: null,
                   fit: BoxFit.scaleDown,
@@ -144,18 +147,43 @@ class _HomeViewState extends State<HomeView> {
                 )),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Container(
                     child: new Image(
-                  image: new AssetImage("assets/instagram.png"),
-                  width: 40,
+                      image: new AssetImage("assets/Group 712.png"),
+                      width: 38,
+                      height: 38,
+                      color: null,
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.center,
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Container(
+                    child: new Image(
+                  image: new AssetImage("assets/Group 713.png"),
+                   width: 40,
                   height: 40,
                   color: null,
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.center,
                 )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Container(
+                    child: new Image(
+                      image: new AssetImage("assets/Group 714.png"),
+                      width: 40,
+                      height: 40,
+                      color: null,
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.center,
+                    )),
               ),
             ],
+          ),
           ),
 
         Container(
@@ -197,6 +225,7 @@ class _HomeViewState extends State<HomeView> {
                             topLeft: Radius.circular(30.0),
                             bottomLeft: Radius.circular(30.0),
                           ),
+
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.only(
@@ -251,103 +280,86 @@ class _HomeViewState extends State<HomeView> {
           ),
         ), // This trailing comma makes auto-formatting nicer for build methods.
 
-          // Container(
-          //
-          //   padding: const EdgeInsets.fromLTRB(30, 20, 30, 00),
-          //   child: TextField(
-          //     decoration: InputDecoration(
-          //       //  prefixIcon: Icon(Icons.paste,  color: Colors.black,),
-          //
-          //       suffixIcon: IconButton(
-          //         icon: Icon(
-          //           Icons.search,
-          //           color: Colors.black,
-          //         ),
-          //         onPressed: () {},
-          //       ),
-          //       fillColor: Colors.white, filled: true,
-          //       border: OutlineInputBorder(
-          //         borderRadius: BorderRadius.circular(50),
-          //       ),
-          //       focusedBorder: OutlineInputBorder(
-          //           borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          //           borderSide: BorderSide(color: Colors.black  )),
-          //       hintText: 'Paste Url / search your favorite',
-          //     ),
-          //   ),
-          // ),
 
+            Container(
+            width: double.infinity,
+    height: 100,
 
+    child: Card(
+    margin: new EdgeInsets.fromLTRB(15.0, 0, 15, 5),
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10.0),
+    ),
+     // color: Color(0xB6B3B3B3),
+    elevation: 10,
+    child: InkWell(
+    onTap: () => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => VideoPlayerApp()),
+    ),
+    child:Row(
+            children: <Widget>[
+              SizedBox(
+                width: 16,
+              ),
 
-          // ListView.builder(
-          //   itemCount: chatUsers.length,
-          //   shrinkWrap: true,
-          //   padding: EdgeInsets.only(top: 10),
-          //   physics: NeverScrollableScrollPhysics(),
-          //   itemBuilder: (context, index) {
-          //     return ConversationList(
-          //       name: chatUsers[index].name,
-          //       messageText: chatUsers[index].messageText,
-          //       imageUrl: chatUsers[index].imageURL,
-          //       time: chatUsers[index].time,
-          //       isMessageRead: (index == 0 || index == 3) ? true : false,
-          //     );
-          //   },
-          // ),
-          Column(
-            children: [
-              Container(
-                width: 400,
-                height: 120,
-                child: Card(
-                  margin: new EdgeInsets.all(20.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  color: Colors.white,
-                  elevation: 10,
-                  child: InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => VideoPlayerApp()),
-                    ),
+              CircleAvatar(
+                // need to be network image for real example for not change to
+                backgroundImage: AssetImage("assets/img_2.png"),
+
+                maxRadius: 30,
+              ),
+              SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.transparent,
+                  padding: EdgeInsets.fromLTRB(5, 10, 0, 0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const ListTile(
-                        leading: Icon(Icons.album, size: 60),
-                        title: Text('Rajiv Talreja',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            )),
-                        subtitle: Text('Business Coach',
-                            style:
-                                TextStyle(fontSize: 15.0, color: Colors.black)),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text('Rajiv Talreja',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text('Business Coach',
+                        style: TextStyle(
+                            fontSize: 15,fontWeight: FontWeight.w600
+                            ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text('GDF-638',
+                        style: TextStyle(
+                          fontSize: 15,  color: Color(0x7D000000),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                     ],
                   ),
-
                 ),
-                ),
-
-
               ),
+
+
+
+
+
+
             ],
           ),
-          // Container(
-          //   // width: 400,
-          //   // height: 100,
-          //   child: Card(
-          //     margin: new EdgeInsets.all(10.0),
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(10.0),
-          //     ),
-          //     color: Colors.white,
-          //     elevation: 10,
-          //   ),
-          // ),
-
+          ),
+          ),
+          ),
 
 
         ]
@@ -367,7 +379,7 @@ class _HomeViewState extends State<HomeView> {
         // space to fit everything.
         child: ListView(
           // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
           children: [
             SizedBox(height:50),
             // Card(
@@ -408,7 +420,12 @@ class _HomeViewState extends State<HomeView> {
               elevation: 10,
               child: ListTile(
                 iconColor: Colors.black,
-                leading: Icon(Icons.contact_support_rounded),
+                leading:
+                ImageIcon(
+                  AssetImage("assets/lc.png"),
+                  color: Colors.black,
+                  size: 25,
+                ),
                 title: const Text(
                   'All Questions',
                   style: TextStyle(
@@ -436,7 +453,11 @@ class _HomeViewState extends State<HomeView> {
               elevation: 10,
               child: ListTile(
                 iconColor: Colors.black,
-                leading: Icon(Icons.chat),
+                leading:  ImageIcon(
+                  AssetImage("assets/cc.png"),
+                  color: Colors.black,
+                  size: 25,
+                ),
                 title: const Text(
                   'All Chats',
                   style: TextStyle(
@@ -464,7 +485,11 @@ class _HomeViewState extends State<HomeView> {
               elevation: 10,
               child: ListTile(
                 iconColor: Colors.black,
-                leading: Icon(Icons.view_comfortable),
+                leading:  ImageIcon(
+                  AssetImage("assets/direct.png"),
+                  color: Colors.black,
+                  size: 25,
+                ),
                 title: const Text(
                   'All Appointments',
                   style: TextStyle(
@@ -541,7 +566,11 @@ class _HomeViewState extends State<HomeView> {
             ),
             ListTile(
               iconColor: Colors.black,
-              leading: Icon(Icons.person_search),
+              leading: ImageIcon(
+                AssetImage("assets/ep_info-filled.png"),
+                color: Colors.black,
+                size: 25,
+              ),
               title: const Text(
                 'About Us',
                 style: TextStyle(
@@ -559,7 +588,11 @@ class _HomeViewState extends State<HomeView> {
             ),
             ListTile(
               iconColor: Colors.black,
-              leading: Icon(Icons.contact_phone),
+              leading:  ImageIcon(
+                AssetImage("assets/image 67.png"),
+                color: Colors.black,
+                size: 25,
+              ),
               title: const Text(
                 'Contact Us',
                 style: TextStyle(
@@ -577,7 +610,11 @@ class _HomeViewState extends State<HomeView> {
             ),
             ListTile(
               iconColor: Colors.black,
-              leading: Icon(Icons.feedback),
+              leading:  ImageIcon(
+                AssetImage("assets/image 68.png"),
+                color: Colors.black,
+                size: 25,
+              ),
               title: const Text(
                 'Send Feedback',
                 style: TextStyle(

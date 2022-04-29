@@ -103,34 +103,63 @@ class _BecomeMasterStep1State extends State<BecomeMasterStep1> {
                     ),
                   ),
                 ),
+Row(
+  children: [
+    Container(
+      width: 290,
+      padding: const EdgeInsets.fromLTRB(45, 05, 10, 05),
+      //  padding: const EdgeInsets.all(10),
 
-                Container(
-                  padding: const EdgeInsets.fromLTRB(45, 05, 45, 05),
-                  //  padding: const EdgeInsets.all(10),
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        //textAlign: TextAlign.center,
+        // onChanged: (value) {
+        //   setState(() {
+        //     _email = value;
+        //     _emailOk = EmailValidator.validate(_email);
+        //   });
+        // },
+        decoration: InputDecoration(
+          // borderRadius: BorderRadius.circular(10.0),
+          //fillColor: Colors.white,
+          fillColor: Colors.white, filled: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12.0)),
+              borderSide: BorderSide(color: Colors.black45)),
+          hintText: 'yourname@example.com',
+        ),
+      ),
+    ),
+    Container(
+        height: 30,
+        width: 30,
+        // decoration: BoxDecoration(
+        //   border: Border.all(color: Color(0xD6D6D6D6)),
+        //   borderRadius: BorderRadius.circular(5),
+        //
+        // ),
+       // margin: const EdgeInsets.fromLTRB(5, 5, 0, 25),
+        //padding: const EdgeInsets.fromLTRB(10, 15, 0, 15),
 
-                  child: TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    //textAlign: TextAlign.center,
-                    // onChanged: (value) {
-                    //   setState(() {
-                    //     _email = value;
-                    //     _emailOk = EmailValidator.validate(_email);
-                    //   });
-                    // },
-                    decoration: InputDecoration(
-                      // borderRadius: BorderRadius.circular(10.0),
-                      //fillColor: Colors.white,
-                      fillColor: Colors.white, filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                          borderSide: BorderSide(color: Colors.black45)),
-                      hintText: 'yourname@example.com',
-                    ),
-                  ),
-                ),
+        child:Image(
+                image: new AssetImage("assets/verified.png"),
+                height: 26,
+                width: 25,
+                fit: BoxFit.cover,
+              ),
+              ),
+
+            ]
+        ),
+
+
+
+
+
+
 
                 Align(
                   alignment: Alignment.centerLeft,
@@ -160,8 +189,14 @@ class _BecomeMasterStep1State extends State<BecomeMasterStep1> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.fromLTRB(45, 05, 45, 05),
+
+
+          Row(
+            children: [
+              Container(
+                  width: 290,
+
+                  padding: const EdgeInsets.fromLTRB(45, 05, 10, 05),
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -183,8 +218,36 @@ class _BecomeMasterStep1State extends State<BecomeMasterStep1> {
                     // ], // Only numbers can be entered
                   ),
                 ),
+
                 Container(
-                  padding: const EdgeInsets.fromLTRB(45, 05, 45, 05),
+                  height: 30,
+                  width: 30,
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(color: Color(0xD6D6D6D6)),
+                  //   borderRadius: BorderRadius.circular(5),
+                  //
+                  // ),
+                  // margin: const EdgeInsets.fromLTRB(5, 5, 0, 25),
+                  //padding: const EdgeInsets.fromLTRB(10, 15, 0, 15),
+
+                  child:Image(
+                    image: new AssetImage("assets/verified.png"),
+                    height: 26,
+                    width: 25,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+
+              ]
+            ),
+
+
+          Row(
+              children: [
+                Container(
+                  width: 290,
+
+                  padding: const EdgeInsets.fromLTRB(45, 05, 10, 05),
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -207,6 +270,28 @@ class _BecomeMasterStep1State extends State<BecomeMasterStep1> {
                     // ], // Only numbers can be entered
                   ),
                 ),
+                Container(
+                  height: 20,
+                  width: 20,
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(color: Color(0xD6D6D6D6)),
+                  //   borderRadius: BorderRadius.circular(5),
+                  //
+                  // ),
+                  // margin: const EdgeInsets.fromLTRB(5, 5, 0, 25),
+                  //padding: const EdgeInsets.fromLTRB(10, 15, 0, 15),
+
+                  child:Image(
+                    image: new AssetImage("assets/img_12.png"),
+                    height: 20,
+                    width: 20,
+                    //fit: BoxFit.cover,
+                  ),
+                ),
+
+              ]
+          ),
+
                 SizedBox(
                   height: 50,
                 ),
@@ -224,7 +309,7 @@ class _BecomeMasterStep1State extends State<BecomeMasterStep1> {
                       style: ElevatedButton.styleFrom(
                         primary: Colors.black, // background
                         onPrimary: Colors.white, // foreground
-                        padding: const EdgeInsets.fromLTRB(70, 15, 70, 15),
+                        padding: const EdgeInsets.fromLTRB(70, 20, 70, 20),
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                         ),

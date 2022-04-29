@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'all_questions.dart';
 import 'send_leave_question.dart';
 
 class CheckRecharge extends StatelessWidget {
@@ -12,33 +13,84 @@ class CheckRecharge extends StatelessWidget {
 
       //theme: new ThemeData(scaffoldBackgroundColor:  Color(0xFFEFEFEF)),
       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  AllLeaveQuestion()),
+            );
+          },
+
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(right: 16),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
+                ),
+                SizedBox(width: 2,),
+                CircleAvatar(
+                  child: Image(
+                    image: new AssetImage("assets/img_2.png"),
+                    width: 40,
+                    height: 40,
+                    color: null,
+                    //fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,
+                  ),
+                  maxRadius: 20,
+                ),
+                SizedBox(width: 12,),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Rajiv Talreja",style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
+                      SizedBox(height: 6,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 00, right: 0, top: 0, bottom:0),
+                        child: Row(
+                          children: [
+                            Image(
+                              image: new AssetImage("assets/online.png"),
+                              width: 10,
+                              height: 10,
+                              color: null,
+                              //fit: BoxFit.scaleDown,
+                              alignment: Alignment.center,
+                            ),
+                            SizedBox(width:5),
+                            Text('Online', style: TextStyle(
+                                fontSize: 12),),
+                          ],
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+                // Icon(Icons.settings,color: Colors.black54,),
+
+              ],
+            ),
+          ),
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25.0),
             topRight: Radius.circular(25.0),
           ),
-        ),
-        title:  Row(
-         // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/arjun.png', height: 35,width: 35,
-                fit: BoxFit.cover),
-            SizedBox(width: 10,),
-            Column(
-                //padding: const EdgeInsets.all(8.0),
-              children: [
-                Text('Rajiv Talreja', style: TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold),),
-                Row(mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                  Image.asset('assets/rtm.png', height: 10,width: 10,fit: BoxFit.cover),
-                Text('Online', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.bold),),
-            ],
-            ),
-              ],
-            ),
-            // Icon (Icon.),
-          ],
-
         ),
 
 
@@ -46,16 +98,16 @@ class CheckRecharge extends StatelessWidget {
         actions: [
           PopupMenuButton<int>(
             itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Video Call')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('End Chat')),
-              new PopupMenuItem<int>(
-                  value: 3, child: new Text('Rate Now')),
-              new PopupMenuItem<int>(
-                  value: 4, child: new Text('Report')),
-              new PopupMenuItem<int>(
-                  value: 5, child: new Text('Delete Chat'))
+              // new PopupMenuItem<int>(
+              //     value: 1, child: new Text('Video Call')),
+              // new PopupMenuItem<int>(
+              //     value: 2, child: new Text('End Chat')),
+              // new PopupMenuItem<int>(
+              //     value: 3, child: new Text('Rate Now')),
+              // new PopupMenuItem<int>(
+              //     value: 4, child: new Text('Report')),
+              // new PopupMenuItem<int>(
+              //     value: 5, child: new Text('Delete Chat'))
             ],
             // onSelected: (int value) {
             //   setState(() { _value = value; });
@@ -73,7 +125,7 @@ class CheckRecharge extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: const Text('Insufficient wallet banance !',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,)),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
           onPressed: () {
             showModalBottomSheet<void>(
               context: context,
@@ -149,7 +201,10 @@ class CheckRecharge extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white, // background
                             onPrimary: Colors.white, // foreground
-                            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                            padding: const EdgeInsets.fromLTRB(30, 12, 30, 12),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(10.0),
+                            ),
                           ),
                           child: const Text('Cancel',
                             style: TextStyle(
@@ -163,7 +218,11 @@ class CheckRecharge extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             primary: Colors.teal, // background
                             onPrimary: Colors.white, // foreground
-                            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                            padding: const EdgeInsets.fromLTRB(30, 12, 30, 12),
+                            shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(10.0),
+                            ),
+
                           ),
                           onPressed: () {
                             // Navigator.pop(context);
@@ -193,7 +252,7 @@ class CheckRecharge extends StatelessWidget {
         ),
       ),
       bottomSheet: Container(
-padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         height: 400.0,
         width:double.infinity,
         decoration: BoxDecoration(
@@ -220,7 +279,7 @@ padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                           child: Text(
                             "Insufficient wallet banance !",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 20,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
@@ -235,10 +294,14 @@ padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                       mainAxisAlignment: MainAxisAlignment.center,
 
                       children: <Widget>[
-                        SizedBox( width: 20,),
-                        Text('Available Balance'),
+                        SizedBox( width: 25,),
+                        Text('Available Balance',    style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),),
                         SizedBox(width: 100,),
-                        Text('Rs. 0.00', style: TextStyle(color:Colors.red, fontWeight: FontWeight.bold)),
+                        Text('Rs. 0.00', style: TextStyle(color:Colors.red, fontSize: 15, fontWeight: FontWeight.bold)),
                       ],
                     ),
                     SizedBox(height:10,),
@@ -251,14 +314,14 @@ padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     ),
                     Padding(
 
-                      padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
+                      padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 15),
                       child:  Container(
                         width:300,
                         padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 100),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.white70, width: 1),
                           borderRadius: BorderRadius.circular(05),
-                          color: Colors.black12,
+                          color: Color(0xF6F6F6F6),
                           //shape: BoxShape.circle,
                         ),
                         child:Text(
@@ -272,25 +335,30 @@ padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                        SizedBox(height:10,width:15,),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white, // background
                             onPrimary: Colors.white, // foreground
-                            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                            padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                            side: BorderSide(
+                              width: 1.0,
+                              color: Colors.black,
+                            ),
                           ),
                           child: const Text('Cancel',
                             style: TextStyle(
                               color:Colors.black,
-                              fontSize:12,
+                              fontSize:13,
                             ),),
                           onPressed: () => Navigator.pop(context),
                         ),
                         SizedBox(height:10,width:10,),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.teal, // background
+                            primary: Colors.black, // background
                             onPrimary: Colors.white, // foreground
-                            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                            padding: const EdgeInsets.fromLTRB(30, 16, 30, 16),
                           ),
                           onPressed: () {
                             // Navigator.pop(context);
@@ -302,7 +370,7 @@ padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                           child: const Text('RECHARGE & CONTINUE',
                             style: TextStyle(
                               color:Colors.white,
-                              fontSize:12,
+                              fontSize:13,
                             ),
                           ),
 

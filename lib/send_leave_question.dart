@@ -12,55 +12,87 @@ class LeaveQuestion extends StatelessWidget {
 
       //theme: new ThemeData(scaffoldBackgroundColor:  Color(0xFFEFEFEF)),
       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+
+              Navigator.pop(context);
+
+          },
+
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25.0),
             topRight: Radius.circular(25.0),
           ),
         ),
-        title:  Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/arjun.png', height: 35,width: 35,
-                fit: BoxFit.cover),
-            SizedBox(width: 10,),
-            Column(
-              //padding: const EdgeInsets.all(8.0),
-              children: [
-                Text('Rajiv Talreja', style: TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold),),
-                Row(mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/online.png', height: 10,width: 10,fit: BoxFit.cover),SizedBox(width: 5,),
-                    Text('Online', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.bold),),
-                  ],
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(right: 16),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
                 ),
+                SizedBox(width: 2,),
+                CircleAvatar(
+                  child: Image(
+                    image: new AssetImage("assets/img_2.png"),
+                    width: 40,
+                    height: 40,
+                    color: null,
+                    //fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,
+                  ),
+                  maxRadius: 20,
+                ),
+                SizedBox(width: 12,),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Rajiv Talreja",style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
+                      SizedBox(height: 6,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 00, right: 0, top: 0, bottom:0),
+                        child: Row(
+                          children: [
+                            Image(
+                              image: new AssetImage("assets/online.png"),
+                              width: 10,
+                              height: 10,
+                              color: null,
+                              //fit: BoxFit.scaleDown,
+                              alignment: Alignment.center,
+                            ),
+                            SizedBox(width:5),
+                            Text('Online', style: TextStyle(
+                                fontSize: 12),),
+                          ],
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+                // Icon(Icons.settings,color: Colors.black54,),
+
               ],
             ),
-            // Icon (Icon.),
-          ],
-
+          ),
         ),
 
 
 
-        actions: [
-          PopupMenuButton<int>(
-            itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Settings')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('View Contact')),
-              // new PopupMenuItem<int>(
-              //     value: 3, child: new Text('Item Three')),
-              // new PopupMenuItem<int>(
-              //     value: 4, child: new Text('I am Item Four'))
-            ],
-            // onSelected: (int value) {
-            //   setState(() { _value = value; });
-            // }
-          )
-
-        ],
         iconTheme: IconThemeData(color: Colors.black),
         //centerTitle: true,
         backgroundColor: Colors.white,
@@ -78,7 +110,7 @@ class LeaveQuestion extends StatelessWidget {
                 padding: EdgeInsets.all(15.0),
                 child: TextField(
                   maxLines: 30,
-                  decoration: InputDecoration.collapsed(hintText: "Type a message"),
+                  decoration: InputDecoration.collapsed(hintText: "Type a message", hintStyle: TextStyle(color: Color(0xC4C4C4C4), fontSize: 20)),
                 ),
               )
           ),
@@ -173,6 +205,9 @@ class LeaveQuestion extends StatelessWidget {
                       primary: Colors.black, // background
                       onPrimary: Colors.white, // foreground
                       padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0),
+                      ),
                     ),
                     icon: Icon(Icons.star,color: Colors.white,),  //icon data for elevated button
                     label: Text("PREORITISE QUESTION",
@@ -186,7 +221,7 @@ class LeaveQuestion extends StatelessWidget {
                         builder: (BuildContext context) {
                           return Container(
                             height: 350,
-                            color: Colors.white70,
+                            color: Color(0xF5F5F5F5),
 
                             child: Column(
                               // mainAxisAlignment: MainAxisAlignment.center,
@@ -210,7 +245,7 @@ class LeaveQuestion extends StatelessWidget {
                                 ),
                                 Text('2nd Question',
                                   style: TextStyle(
-                                    fontSize: 40,
+                                    fontSize: 29,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -248,7 +283,7 @@ class LeaveQuestion extends StatelessWidget {
                                         style: ElevatedButton.styleFrom(
                                           primary: Colors.black, // background
                                           onPrimary: Colors.white, // foreground
-                                          padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                                           side: BorderSide(width: 1, color: Colors.black,),
                                           shape: new RoundedRectangleBorder(
                                             borderRadius: new BorderRadius.circular(10.0),
@@ -277,7 +312,10 @@ class LeaveQuestion extends StatelessWidget {
                                       style: ElevatedButton.styleFrom(
                                         primary: Colors.black, // background
                                         onPrimary: Colors.white, // foreground
-                                        padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                                        padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                                        shape: new RoundedRectangleBorder(
+                                          borderRadius: new BorderRadius.circular(10.0),
+                                        ),
                                       ),
                                       onPressed: (){
                                         Navigator.push(
@@ -285,7 +323,11 @@ class LeaveQuestion extends StatelessWidget {
                                           MaterialPageRoute(builder: (context) => SuccessFull()),
                                         );
                                       },
-                                      icon: Icon(Icons.send,color: Colors.white,),  //icon data for elevated button
+                                      icon:ImageIcon(
+                                        AssetImage("assets/img_13.png"),
+                                        size: 15,
+                                        //  color: Color(0xFF3A5A98),
+                                      ), //icon data for elevated button
                                       label: Text("SEND AS PREORITISED QUESTION",
                                         style: TextStyle(
                                           color:Colors.white,
@@ -312,6 +354,9 @@ class LeaveQuestion extends StatelessWidget {
                       primary: Colors.teal, // background
                       onPrimary: Colors.white, // foreground
                       padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0),
+                      ),
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -320,7 +365,12 @@ class LeaveQuestion extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => SuccessFull()),
                       );
                     },
-                    icon: Icon(Icons.send,color: Colors.white,size: 20),
+                    icon:ImageIcon(
+                      AssetImage("assets/img_13.png"),
+                    size: 15,
+                    //  color: Color(0xFF3A5A98),
+                    ),
+
                     label: Text("Send",
                       style: TextStyle(
                         color:Colors.white,

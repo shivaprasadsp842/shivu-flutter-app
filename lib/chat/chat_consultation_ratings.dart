@@ -84,6 +84,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
         key: key,
         length: 7,
         child: Scaffold(
+          extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -95,45 +96,147 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
 
           child: Icon(
             Icons.arrow_back_ios,
-            color: Colors.grey,
+            color: Colors.white,
           ),
         ),
         iconTheme: IconThemeData(
           color: Colors.blue, //change your color here
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
         actions: [
-          PopupMenuButton<int>(
-            itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Copy Profile Link')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Share Proflie')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Report User')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Block User')),
-              // new PopupMenuItem<int>(
-              //     value: 3, child: new Text('Item Three')),
-              // new PopupMenuItem<int>(
-              //     value: 4, child: new Text('I am Item Four'))
+          PopupMenuButton(
+            elevation: 50,
+            color:Colors.white,
+
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: SizedBox(
+              width: 40,
+              height: 49,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: Container(
+                  // color: Theme.of(context).colorScheme.button,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+
+                            ImageIcon(
+                              AssetImage("assets/Group 686.png"),
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ],
+                        ),
+
+                        Spacer(),
+
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  value: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        // Icon(
+                        //     Icons.link,
+                        //     color: Color(0x7D000000),
+                        //     size: 20,
+                        //   ),
+
+                        ImageIcon(
+                          AssetImage("assets/Vector.png"),
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text('Copy Profile Link',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        ImageIcon(
+                          AssetImage("assets/Group 724.png"),
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                          child: Text(' Share Proflie',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        ImageIcon(
+                          AssetImage("assets/Group 726.png"),
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Report User',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.block,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Block User',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  ))
             ],
-            // onSelected: (int value) {
-            //   setState(() { _value = value; });
-            // }
-          )
+          ),
+
         ],
-        title:  Container(
+        title:   Container(
             //color: Colors.grey,
-          height: 55,
-          width:55,
+            height: 35,
+            width:35,
             margin: EdgeInsets.all(0),
             padding: EdgeInsets.all(0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                border: Border.all(width: 3, color: Colors.white)),
+                border: Border.all(width: 2, color: Colors.white)),
             child:  FloatingActionButton(
-              //  backgroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
               //   shape: RoundedRectangleBorder(
               //       borderRadius: BorderRadius.all(Radius.circular(50.0))
               //   ),
@@ -158,6 +261,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
             ),
           ),
 
+
         centerTitle: true,
       ),
       // Use a FutureBuilder to display a loading spinner while waiting for the
@@ -166,7 +270,12 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
         child: IntrinsicHeight(
           child: Column(
             children: <Widget>[
-              FutureBuilder(
+
+
+            Container(
+            height: 350,
+            width:double.infinity,
+            child:FutureBuilder(
                 future: _initializeVideoPlayerFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
@@ -186,15 +295,16 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                   }
                 },
               ),
+              ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 10),
+                padding: const EdgeInsets.fromLTRB(15.0, 10, 10, 10),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
                     child: Text(
                       "Rating and reviews",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 12,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -213,7 +323,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                   child:Container(
                     padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Column(
                           children: <Widget>[
@@ -224,13 +334,14 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 fontWeight: FontWeight.bold,
                               ),),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+
                               ],
 
                             ),
@@ -239,7 +350,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                             ),
                             Text('536236',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 10,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),),
@@ -247,7 +358,9 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
 
                         ),
 
-
+                        SizedBox(
+                          width: 10,
+                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -260,7 +373,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
 
                                 Text('5',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -271,7 +384,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -292,7 +405,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('4',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -303,7 +416,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -322,7 +435,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('3',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -333,7 +446,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -352,7 +465,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('2',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -363,7 +476,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -381,7 +494,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('1',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -392,7 +505,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -424,6 +537,9 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                 height:10,
               ),
 
+              SizedBox(
+                height:10,
+              ),
               PreferredSize(
                   child: TabBar(
                       isScrollable: true,
@@ -432,12 +548,12 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                       tabs: [
                         Tab(
                           child:    Container(
-                            /// width: 80,
+                            width: 80,
                             //color: Colors.green,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black12, width: 1),
                               borderRadius: BorderRadius.circular(20),
-                              //color: Colors.yellow,
+                              color: Color(0xB270EEDF),
                               //shape: BoxShape.circle,
                             ),
                             // padding: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
@@ -445,8 +561,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                 label: const Text('All'),
                                 labelStyle: const TextStyle(color: Colors.black),
                                 // avatar: const Icon(Icons.color_lens_outlined, color: Colors.white),
-                                backgroundColor: Colors.white
-                                ,
+                                backgroundColor:  Color(0xB270EEDF),
                                 onPressed: () {
                                   showSnackBar(context);
                                 }
@@ -485,10 +600,10 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                             ),
                             child:ActionChip(
 
-                                label: const Text('5'),
+
                                 avatar: const Icon(Icons.star, color: Colors.black),
                                 labelStyle: const TextStyle(color: Colors.black),
-
+                                label: const Text('5'),
                                 backgroundColor: Colors.white,
                                 //tooltip: 'This is tooltip',
                                 onPressed: () {
@@ -592,7 +707,6 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                         )
                       ]),
                   preferredSize: Size.fromHeight(30.0)),
-
               Padding(
                 padding: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
                 child: Card(
@@ -663,9 +777,9 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                         child:  Container(
                           padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12, width: 1),
+                            border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                             borderRadius: BorderRadius.circular(05),
-                            color: Colors.black12,
+                            color: Color(0xF6F6F6F6),
                             //shape: BoxShape.circle,
                           ),
                           child:Text(
@@ -745,9 +859,9 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                             child:  Container(
                               padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12, width: 1),
+                                border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                                 borderRadius: BorderRadius.circular(05),
-                                color: Colors.black12,
+                                color: Color(0xF6F6F6F6),
                                 //shape: BoxShape.circle,
                               ),
                               child:Text(
@@ -766,8 +880,10 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                 ),
               ),
 
+              SizedBox(
+                height:150,
+              ),
 
-              SizedBox(height:210),
 
 
 
@@ -837,9 +953,12 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                     ElevatedButton(
 
                                       style: ElevatedButton.styleFrom(
-                                        primary: Colors.black, // background
+                                        primary: Color(0xCC000000), // background
                                         onPrimary: Colors.white, // foreground
-                                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                                        shape: new RoundedRectangleBorder(
+                                          borderRadius: new BorderRadius.circular(10.0),
+                                        ),
                                       ),
                                       onPressed: () {
                                         Navigator.push(
@@ -867,9 +986,12 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
                                       ElevatedButton(
 
                                         style: ElevatedButton.styleFrom(
-                                          primary: Colors.green, // background
+                                          primary: Color(0xCC27A58F), // background
                                           onPrimary: Colors.white, // foreground
-                                          padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
+                                          padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
+                                          shape: new RoundedRectangleBorder(
+                                            borderRadius: new BorderRadius.circular(10.0),
+                                          ),
                                         ),
                                         onPressed: () {
                                           Navigator.push(
@@ -878,7 +1000,7 @@ class _ChatVideoPlayerScreenState extends State<ChatVideoPlayerScreen> {
 
                                           );
                                         },
-                                        child: const Text('Start',
+                                        child: const Text('START NOW',
                                           style: TextStyle(
                                             color:Colors.white,
                                             fontSize:15,

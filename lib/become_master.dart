@@ -1,21 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_ui/view/become_master_step1.dart';
 import 'package:furniture_ui/view/homescreen.dart';
-
-
-class UserView extends StatelessWidget {
+import 'package:video_player/video_player.dart';
+class UserView extends StatefulWidget {
   const UserView({Key? key}) : super(key: key);
 
+  @override
+  State<UserView> createState() => _UserViewState();
+}
 
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
+class _UserViewState extends State<UserView> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
 
+  @override
+  void initState() {
+    super.initState();
+
+    // Create and store the VideoPlayerController. The VideoPlayerController
+    // offers several different constructors to play videos from assets, files,
+    // or the internet.
+    _controller = VideoPlayerController.network(
+      'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+    );
+
+    // Initialize the controller and store the Future for later use.
+    _initializeVideoPlayerFuture = _controller.initialize();
+
+    // Use the controller to loop the video.
+    _controller.setLooping(true);
+  }
+
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -69,7 +95,7 @@ class UserView extends StatelessWidget {
           ),
 
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
         bottomOpacity: 0.0,
         elevation: 0.0,
         actions: [
@@ -144,154 +170,235 @@ class UserView extends StatelessWidget {
 
        ),
 
-      body: Stack(
-        children: <Widget>[
-
-         Image(
-                image: new AssetImage("assets/arjun.png"),
-                width: double.infinity,
-                height: 250,
-                color: null,
-                fit: BoxFit.scaleDown,
-                alignment: Alignment.center,
-              ),
-
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 250, 0, 0),
-
-            child: Card(
-
-              // margin: new EdgeInsets.fromLTRB(50.0, 35, 50, 24),
-              elevation: 20,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    //CircleAvatar
-                    // Text(
-                    //   'ARC-325',
-                    //   style: TextStyle(
-                    //     fontSize: 16,
-                    //     color: Colors.black54,
-                    //     fontWeight: FontWeight.bold,
-                    //   ), //Textstyle
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        child: Text(
-                          "About",
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),//SizedBox
-                    //Text
-                    SizedBox(
-                      height: 20,
-                    ), //SizedBox
-                    Text(
-                      'I am Rajiv Talreja, and I am a business coach. My  journey started when I founded Quantum Leap in the year 2006 as a Corporate TrainingCompany. From 2006 to 2014, we built aclientele of 110 corporate organizations. '
-                      ,style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                    ), //Textstyle
-                    ), //Text
-                    SizedBox(
-                      height: 100,
-                    ), //SizedBox
-                    //SizedBox
-
-                  ],
-                ), //Column
-              ), //Padding
-            ),
-          ),
-
-          Padding(
-
-            padding: const EdgeInsets.fromLTRB(50.0, 220, 50, 24),
-            child: Card(
-
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-
-                elevation: 2,
-                color: Colors.black,
-                child: ListTile(
-                  //  leading: Icon(Icons.album),
-                  title: Text('Arjun Chaithanya',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white,
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 20,
+      body:  SingleChildScrollView(
+        child: IntrinsicHeight(
+          child: Column(
+            children: <Widget>[
 
 
+
+              Stack(
+                children: <Widget>[
+                  // Container(
+                  //   height: 350,
+                  //   color: Colors.black,
+                  //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  //   width: double.infinity,
+                  //   child:   Image(
+                  //     image: new AssetImage("assets/Rectangle 2259.png"),
+                  //     //height: 0,
+                  //     //   width: double.infinity,
+                  //     fit: BoxFit.cover,
+                  //   ),
+                  // ),
+                  Container(
+                    height: 350,
+                    width: double.infinity,
+                    child: FutureBuilder(
+                      future: _initializeVideoPlayerFuture,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          // If the VideoPlayerController has finished initialization, use
+                          // the data it provides to limit the aspect ratio of the video.
+                          return AspectRatio(
+                            aspectRatio: _controller.value.aspectRatio,
+                            // Use the VideoPlayer widget to display the video.
+                            child: VideoPlayer(_controller),
+                          );
+                        } else {
+                          // If the VideoPlayerController is still initializing, show a
+                          // loading spinner.
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
                     ),
                   ),
-                  subtitle: Text('Entrepreneur',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white,
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 17,
-                    ),),
-                )
-            ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 320, 0, 0),
+
+                    child:  Card(
+                      // margin: new EdgeInsets.fromLTRB(50.0, 35, 50, 24),
+                      elevation: 20,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 10),
+                        child: Column(
+                          children: [
+
+                            SizedBox(
+                              height: 60,
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                child: Text(
+                                  "About",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),//SizedBox
+                            //Text
+                            SizedBox(
+                              height: 10,
+                            ), //SizedBox
+                            Text(
+                              'Arjun Chaithanya, Well known as “THE MIND ARCHITECT” is one among the finest influencer. He is renowed Emotional Intelligence Facilitator & Performance Coach. Internationallu certified “Neuro-Linguistic Programming” practitioner from ABNLP.'
+                              ,style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                            ), //Textstyle
+                            ), //Text
+                            SizedBox(
+                              height: 200 ,
+                            ), //SizedBox
+                            //SizedBox
+                          ],
+                        ), //Column
+                      ), //Padding
+                    ),
+                  ),
+
+
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(70.0, 290, 50, 16),
+                    child: Card(
+
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+
+                      elevation: 02,
+                      color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(40.0, 10, 30, 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Arjun Chaithanya',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                             // textAlign: Alignment.center,//Textstyle
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Entrepreneur',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                              ), //Textstyle
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'ARC-325',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300,
+                              ), //Textstyle
+                            ),
+                          ],
+                        ),
+
+                      ),
+                    ),
+                  ),
+
+
+
+
+                ],
+              )
+
+
+            ],
           ),
-        ],
+
+        ),
       ),
-        bottomSheet: Container(
+
+
+      bottomSheet: Container(
         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
     color: Color(0xffffffff),
-    height: 100.0,
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      ElevatedButton(
+    height: 95.0,
+    child:Stack(
+      children: <Widget>[
 
-        style: ElevatedButton.styleFrom(
-          primary: Colors.black, // background
-          onPrimary: Colors.black, // foreground
-          padding: const EdgeInsets.fromLTRB(50, 10, 50, 20),
-          shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 32, 0, 0),
+          child: Container(
+          //  color: Colors.red,
+            height: 80,
+            child:Card(
+                color: Color(0xcccccccc),
+                elevation: 10,
+                child: ListTile(
+
+                )) ,
           ),
         ),
-        onPressed: () {
-          //Navigator.pop(context);
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BecomeMasterStep1()),
-          );
-        },
-        child: const Text('Become a Master',
-          style: TextStyle(
-            color:Colors.white,
-            fontSize:20,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(50.0, 10, 24, 10),
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(  width: 8,color: Colors.white),
+              borderRadius: BorderRadius.all(
+                  Radius.circular(18.0) //                 <--- border radius here
+              ),
+            ),
 
-            fontWeight: FontWeight.bold,
-          ),
+            child:ElevatedButton(
+
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black, // background
+                onPrimary: Colors.black, // foreground
+                padding: const EdgeInsets.fromLTRB(50, 10, 50, 20),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(10.0),
+                ),
+              ),
+              onPressed: () {
+                //Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BecomeMasterStep1()),
+                );
+              },
+              child: const Text('Become a Master',
+                style: TextStyle(
+                  color:Colors.white,
+                  fontSize:20,
+
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+            ),
+            ),
+
         ),
-
+      ],
+    ),
       ),
-
-
-              ]
-            ),
-            ),
 
 
 

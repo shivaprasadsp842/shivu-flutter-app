@@ -73,6 +73,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         key: key,
         length: 7,
         child: Scaffold(
+          extendBodyBehindAppBar: true,
         appBar: AppBar(
         leading: InkWell(
         onTap: () {
@@ -84,72 +85,81 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
     child: Icon(
     Icons.arrow_back_ios,
-    color: Colors.grey,
+    color: Colors.white,
     ),
     ),
     iconTheme: IconThemeData(
     color: Colors.blue, //change your color here
     ),
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
+          actions: [
+            Container(
+              //color: Colors.grey,
+              height: 20,
+              width:25,
+              margin: EdgeInsets.all(15),
+              padding: EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(width: 1, color: Colors.white)),
+              child:FloatingActionButton(
+                backgroundColor: Colors.transparent,
 
-    actions: [
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0))
+                ),
 
-    PopupMenuButton(
-    itemBuilder: (context) => [
-    new PopupMenuItem(
-    value: 1, child: new Text('Copy Profile Link'),
-    onTap: () {
-    Clipboard.setData(ClipboardData(text: "My Profile Link"));
-    key.currentState?.showSnackBar(
-    new SnackBar(content: new Text("Copied to Clipboard"),));
-    },),
-    new PopupMenuItem(
-    value: 2, child: new Text('Share Proflie')),
-    new PopupMenuItem(
-    value: 2, child: new Text('Report User')),
-    new PopupMenuItem(
-    value: 2, child: new Text('Block User')),
-    // new PopupMenuItem<int>(
-    //     value: 3, child: new Text('Item Three')),
-    // new PopupMenuItem<int>(
-    //     value: 4, child: new Text('I am Item Four'))
-    ],
-    // onSelected: (int value) {
-    //   setState(() { _value = value; });
-    // }
-    )
-    ],
-    title:  Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 2),
-        color: Colors.yellow,
-        shape: BoxShape.circle,
-      ),
-      child:
-      FloatingActionButton(
-        backgroundColor: Colors.blue,
-        shape: CircleBorder(),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DefineLeaveQuestion()),
+                  );
+                },
+                // Display the correct icon depending on the state of the player.
+                // child: Icon(
+                //   _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                // ),
+                child: Icon(Icons.edit, size: 15,
+                ),
+              ),
+            ),
+          ],
+          title:   Center(
+            child:   Container(
+              //color: Colors.grey,
+              height: 35,
+              width:35,
+              margin: EdgeInsets.all(0),
+              padding: EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  border: Border.all(width: 2, color: Colors.white)),
+              child:  FloatingActionButton(
+                backgroundColor: Colors.transparent,
+                //   shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.all(Radius.circular(50.0))
+                //   ),
 
-        onPressed: () {
-          // Wrap the play or pause in a call to `setState`. This ensures the
-          // correct icon is shown.
-          setState(() {
-            // If the video is playing, pause it.
-            if (_controller.value.isPlaying) {
-              _controller.pause();
-            } else {
-              // If the video is paused, play it.
-              _controller.play();
-            }
-          });
-        },
-        // Display the correct icon depending on the state of the player.
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-          // color: Colors.red,
-        ),
-      ),
-    ),
+                onPressed: () {
+                  // Wrap the play or pause in a call to `setState`. This ensures the
+                  // correct icon is shown.
+                  setState(() {
+                    // If the video is playing, pause it.
+                    if (_controller.value.isPlaying) {
+                      _controller.pause();
+                    } else {
+                      // If the video is paused, play it.
+                      _controller.play();
+                    }
+                  });
+                },
+                // Display the correct icon depending on the state of the player.
+                child: Icon(
+                  _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                ),
+              ),
+            ),
+          ),
           centerTitle: true,
     ),
       // Use a FutureBuilder to display a loading spinner while waiting for the
@@ -158,25 +168,29 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         child: IntrinsicHeight(
           child: Column(
             children: <Widget>[
-              FutureBuilder(
-                future: _initializeVideoPlayerFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    // If the VideoPlayerController has finished initialization, use
-                    // the data it provides to limit the aspect ratio of the video.
-                    return AspectRatio(
-                      aspectRatio: _controller.value.aspectRatio,
-                      // Use the VideoPlayer widget to display the video.
-                      child: VideoPlayer(_controller),
-                    );
-                  } else {
-                    // If the VideoPlayerController is still initializing, show a
-                    // loading spinner.
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
+              Container(
+                height: 350,
+                width:double.infinity,
+                child: FutureBuilder(
+                  future: _initializeVideoPlayerFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      // If the VideoPlayerController has finished initialization, use
+                      // the data it provides to limit the aspect ratio of the video.
+                      return AspectRatio(
+                        aspectRatio: _controller.value.aspectRatio,
+                        // Use the VideoPlayer widget to display the video.
+                        child: VideoPlayer(_controller),
+                      );
+                    } else {
+                      // If the VideoPlayerController is still initializing, show a
+                      // loading spinner.
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15.0, 10, 10, 10),
@@ -186,7 +200,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                     child: Text(
                       "Rating and reviews",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 12,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -218,11 +232,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+
                               ],
 
                             ),
@@ -231,7 +246,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                             ),
                             Text('536236',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 10,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),),
@@ -239,7 +254,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
                         ),
 
-
+                        SizedBox(
+                          width: 10,
+                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -252,7 +269,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
                                 Text('5',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -263,7 +280,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -284,7 +301,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               children: <Widget>[
                                 Text('4',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -295,7 +312,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -314,7 +331,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               children: <Widget>[
                                 Text('3',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -325,7 +342,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -344,7 +361,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               children: <Widget>[
                                 Text('2',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -355,7 +372,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -373,7 +390,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               children: <Widget>[
                                 Text('1',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -384,7 +401,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -427,12 +444,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                       tabs: [
                         Tab(
                           child:    Container(
-                            /// width: 80,
+                             width: 80,
                             //color: Colors.green,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black12, width: 1),
                               borderRadius: BorderRadius.circular(20),
-                              //color: Colors.yellow,
+                              color: Color(0xB270EEDF),
                               //shape: BoxShape.circle,
                             ),
                             // padding: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
@@ -440,8 +457,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 label: const Text('All'),
                                 labelStyle: const TextStyle(color: Colors.black),
                                 // avatar: const Icon(Icons.color_lens_outlined, color: Colors.white),
-                                backgroundColor: Colors.white
-                                ,
+                                backgroundColor:  Color(0xB270EEDF),
                                 onPressed: () {
                                   showSnackBar(context);
                                 }
@@ -480,10 +496,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                             ),
                             child:ActionChip(
 
-                                label: const Text('5'),
+
                                 avatar: const Icon(Icons.star, color: Colors.black),
                                 labelStyle: const TextStyle(color: Colors.black),
-
+                                label: const Text('5'),
                                 backgroundColor: Colors.white,
                                 //tooltip: 'This is tooltip',
                                 onPressed: () {
@@ -657,9 +673,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                         child:  Container(
                           padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12, width: 1),
+                            border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                             borderRadius: BorderRadius.circular(05),
-                            color: Colors.black12,
+                            color: Color(0xF6F6F6F6),
                             //shape: BoxShape.circle,
                           ),
                           child:Text(
@@ -739,9 +755,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                             child:  Container(
                               padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12, width: 1),
+                                border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                                 borderRadius: BorderRadius.circular(05),
-                                color: Colors.black12,
+                                color: Color(0xF6F6F6F6),
                                 //shape: BoxShape.circle,
                               ),
                               child:Text(
@@ -774,7 +790,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
           bottomSheet: Container(
             color: Colors.white,
-            height: 140.0,
+            height: 150.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -800,11 +816,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
                               padding: const EdgeInsets.fromLTRB(20.0, 5, 10, 0),
                               child:  Container(
-                                padding: const EdgeInsets.fromLTRB(50.0, 10, 50, 10),
+                                padding: const EdgeInsets.fromLTRB(50.0, 15, 50, 15),
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.black12, width: 1),
+                                  border: Border.all(color: Color(0x80E5E5E5), width: 1),
                                   borderRadius: BorderRadius.circular(05),
-                                  color: Colors.black12,
+                                  color: Color(0x80E5E5E5),
                                   //shape: BoxShape.circle,
                                 ),
                                 child:Text(
@@ -825,6 +841,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                 primary: Colors.black, // background
                                 onPrimary: Colors.white, // foreground
                                 padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                ),
                               ),
                               onPressed: () {
                                 // Navigator.pop(context);
@@ -837,7 +856,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               child: const Text('Edit Price',
                                 style: TextStyle(
                                   color:Colors.white,
-                                  fontSize:18,
+                                  fontSize:15,
 
                                   fontWeight: FontWeight.bold,
                                 ),

@@ -169,7 +169,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back,color: Colors.black,),
+                  icon: Icon(Icons.arrow_back_ios,color: Colors.black,),
                 ),
                 SizedBox(width: 2,),
                 CircleAvatar(

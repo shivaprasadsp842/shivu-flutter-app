@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_ui/view/homescreen.dart';
 
-class SuccessFull extends StatelessWidget {
+
+class SuccessFull extends StatefulWidget {
   const SuccessFull({Key? key}) : super(key: key);
 
   @override
+  State<SuccessFull> createState() => _SuccessFullState();
+}
+
+class _SuccessFullState extends State<SuccessFull> {
+  @override
   Widget build(BuildContext context) {
-    return   Scaffold(
+    return  Scaffold(
    //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 500),
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -21,25 +27,61 @@ class SuccessFull extends StatelessWidget {
 
             child: Icon(
               Icons.home,
-              color: Colors.black, size:30
+              color: Colors.transparent, size:30
             ),
           ),
           //iconTheme: IconThemeData(color: Colors.black),
-     title: new Text('Home', style: TextStyle(fontSize: 20, color: Colors.black), textAlign: TextAlign.start),
 
+          flexibleSpace: SafeArea(
+            child: Container(
+              padding: EdgeInsets.only(right: 16),
+              child: Row(
+                children: <Widget>[
+                  IconButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  HomeView()),
+                      );
+                    },
+                    icon: Icon(Icons.home,color: Colors.black, size:30),
+                  ),
+
+
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Home', style: TextStyle(fontSize: 20, color: Colors.black), textAlign: TextAlign.start),
+
+
+
+                      ],
+                    ),
+                  ),
+                  // Icon(Icons.settings,color: Colors.black54,),
+
+                ],
+              ),
+            ),
+          ),
 
     ),
         backgroundColor: Colors.white,
-        body: Column(children: <Widget>[
+        body:  SingleChildScrollView(
+        child: Container(
+        padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+    child: Column(children: <Widget>[
           SizedBox(
-            height: 40,
+            height: 20,
           ),
           CircleAvatar(radius: (52),
-              backgroundColor: Colors.tealAccent,
+              backgroundColor: Color(0xff7DD8B7),
               child: ClipRRect(
                 borderRadius:BorderRadius.circular(70),
                   child: Image.asset(
-                    "assets/img_5.png",
+                    "assets/r.png",
                     height: 100,
                   ),
               )
@@ -57,16 +99,15 @@ class SuccessFull extends StatelessWidget {
     Container(
 
     child: Padding(
-    padding: EdgeInsets.all(10.0),
-        child:  Expanded(
+    padding: EdgeInsets.all(7.0),
+
             child: Text('We’ve received your request and are getting started on it right away.You will receive an email when your Question is accepted & Answered',
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 9,
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
                 ),
                 textAlign: TextAlign.center),
-          ),
           ),
           ),
           Divider(
@@ -79,7 +120,7 @@ class SuccessFull extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(45, 10, 45, 05),
+              padding: const EdgeInsets.fromLTRB(20, 10, 45, 05),
               child: Text(
                 "Order Receipt", style: TextStyle(
                 fontSize: 15,
@@ -142,7 +183,7 @@ class SuccessFull extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(45, 10, 45, 05),
+              padding: const EdgeInsets.fromLTRB(20, 10, 45, 05),
               child: Text(
                 "Billed To", style: TextStyle(
                 fontSize: 15,
@@ -178,7 +219,7 @@ class SuccessFull extends StatelessWidget {
           Row(
             children:  <Widget>[
               Expanded(
-                child: Text('Customer Name    : ',
+                child: Text('Customer Name     : ',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.black,
@@ -202,8 +243,7 @@ class SuccessFull extends StatelessWidget {
 
             child: Padding(
               padding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-              child:  Expanded(
-                child: Text('PLEASE CHECK YOUR CALENDER FOR APPOINTMENT SCHEDULES UPDATES',
+              child:  Text('PLEASE CHECK YOUR CALENDER FOR APPOINTMENT SCHEDULES UPDATES',
                     style: TextStyle(
                       fontSize: 9,
                       fontWeight: FontWeight.bold,
@@ -212,7 +252,7 @@ class SuccessFull extends StatelessWidget {
                     textAlign: TextAlign.center),
               ),
             ),
-          ),
+
 
 
           Divider(
@@ -227,17 +267,16 @@ class SuccessFull extends StatelessWidget {
 
             child: Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 5),
-              child:  Expanded(
-                child: Text('You will get full refund if request is not completed in 7days',
+              child: Text('You will get full refund if request is not completed in 7days',
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: Colors.black45,
                     ),
                     textAlign: TextAlign.center),
               ),
             ),
-          ),
+
           SizedBox(
             height: 10,
           ),
@@ -268,8 +307,7 @@ class SuccessFull extends StatelessWidget {
 
             child: Padding(
               padding: EdgeInsets.fromLTRB(5, 15, 5, 10),
-              child:  Expanded(
-                child: Text('CONGRALUTAIONS',
+              child: Text('CONGRALUTAIONS',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -278,10 +316,6 @@ class SuccessFull extends StatelessWidget {
                     textAlign: TextAlign.center),
               ),
             ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
 
           Align(
             alignment: Alignment.bottomCenter,
@@ -302,6 +336,7 @@ class SuccessFull extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: Colors.lightBlueAccent,
+                      decoration: TextDecoration.underline,
                     ),textAlign: TextAlign.center),
               ),
               Expanded(
@@ -310,6 +345,7 @@ class SuccessFull extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: Colors.lightBlueAccent,
+                      decoration: TextDecoration.underline,
                     ),
                     textAlign: TextAlign.center),
               ),
@@ -320,7 +356,9 @@ class SuccessFull extends StatelessWidget {
 
       ],
         ),
+        ),
 
+    ),
     );
 
   }

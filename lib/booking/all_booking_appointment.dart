@@ -15,11 +15,11 @@ class AllBookingAppointment extends StatelessWidget {
     return MaterialApp(
       //title: _title,
       home:Scaffold(
-        backgroundColor:  Color(0xB2E7CC86),
+        backgroundColor:  Color(0xffE7CC86),
         appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0), // here the desired height
     child:  AppBar(
-          backgroundColor: Color(0xEBBF8B),
+          backgroundColor: Color(0xffE7CC86),
           elevation: 0,
           title: IconButton(
             icon: Icon(Icons.arrow_back, color:Colors.white, size:20),
@@ -65,6 +65,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
     return  SingleChildScrollView(
         child: IntrinsicHeight(
           child:  Container(
+            color: Color(0xffE7CC86),
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 05),
     child:
     Column(
@@ -144,7 +145,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                                   child: ElevatedButton(
 
                                     style: ElevatedButton.styleFrom(
-                                      primary: Colors.lightGreen, // background
+                                      primary: Color(0xff8FDA30),// background
                                       onPrimary: Colors.black, // foreground
                                       padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
                                     ),
@@ -180,15 +181,15 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                                   child: ElevatedButton(
 
                                     style: ElevatedButton.styleFrom(
-                                      primary: Colors.orange[900], // background
+                                      primary: Color(0xffD08328), // background
                                       onPrimary: Colors.black, // foreground
                                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                     ),
                                     onPressed: () {
-                                      Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => BookingAppointmentView()),
-                                      );
+                                      // Navigator.push(
+                                      // context,
+                                      // MaterialPageRoute(builder: (context) => BookingAppointmentView()),
+                                      // );
                                     },
                                     child: const Text('View Details',
                                       style: TextStyle(
@@ -285,7 +286,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                               child: ElevatedButton(
 
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.lightGreen, // background
+                                  primary: Color(0xff8FDA30), // background
                                   onPrimary: Colors.black, // foreground
                                   padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
                                 ),
@@ -321,7 +322,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                               child: ElevatedButton(
 
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.orange[900], // background
+                                  primary: Color(0xffD08328),  // background
                                   onPrimary: Colors.black, // foreground
                                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 ),
@@ -331,7 +332,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                                     MaterialPageRoute(builder: (context) => BookingAppointmentView()),
                                   );
                                 },
-                                child: const Text('View Details',
+                                child: const Text('BOOK NOW',
                                   style: TextStyle(
                                     color:Colors.white,
                                     fontSize:12,
@@ -426,7 +427,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                               child: ElevatedButton(
 
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.lightGreen, // background
+                                  primary: Color(0xff8FDA30), // background
                                   onPrimary: Colors.black, // foreground
                                   padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
                                 ),
@@ -462,7 +463,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                               child: ElevatedButton(
 
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.orange[900], // background
+                                  primary: Color(0xffD08328), // background
                                   onPrimary: Colors.black, // foreground
                                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 ),
@@ -472,7 +473,7 @@ class _BookingCheckStatefulState extends State<BookingCheckStateful> {
                                     MaterialPageRoute(builder: (context) => BookingAppointmentView()),
                                   );
                                 },
-                                child: const Text('View Details',
+                                child: const Text('BOOK NOW',
                                   style: TextStyle(
                                     color:Colors.white,
                                     fontSize:12,

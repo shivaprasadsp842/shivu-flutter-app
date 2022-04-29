@@ -18,10 +18,10 @@ class AddPredefinedViews extends StatelessWidget {
       //title: _title,
       home:Scaffold(
 
-      //  backgroundColor:  Color(0x2EAEABAB),
+        backgroundColor:  Color(0xEEEEEEEE),
         //backgroundColor:  Colors.black12,
         appBar: AppBar(
-            backgroundColor: Colors.white54,
+            backgroundColor:  Color(0xEEEEEEEE),
             elevation: 0,
             title: IconButton(
               icon: Icon(Icons.arrow_back, color:Colors.black, size:20),
@@ -110,9 +110,9 @@ class _AddPredefinedCheckStatefulViewState extends State<AddPredefinedCheckState
   Widget build(BuildContext context) {
     return  SingleChildScrollView(
         child: IntrinsicHeight(
-          child:  Padding(
+          child:    Container(
             padding: const EdgeInsets.fromLTRB(020, 0, 20, 20),
-            //color: Colors.red,
+            color: Color(0xEEEEEEEE),
             child:
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -121,10 +121,11 @@ class _AddPredefinedCheckStatefulViewState extends State<AddPredefinedCheckState
                   children: <Widget>[
                     Container(
                       alignment: Alignment.center,
+                      color: Color(0xDDDDDDDD),
                       child: Image(
                         image: new AssetImage("assets/gradient.png"),
 
-                        height: 50,
+                        height: 56,
                         width: double.infinity,
                         fit: BoxFit.cover,
                         // color: null,
@@ -293,7 +294,7 @@ class _AddPredefinedCheckStatefulViewState extends State<AddPredefinedCheckState
                         child:  Container(
                           height: 32.0,
                           // width:200,
-                          //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.black12, width: 1),
                             borderRadius: BorderRadius.circular(10),
@@ -307,7 +308,7 @@ class _AddPredefinedCheckStatefulViewState extends State<AddPredefinedCheckState
                             isExpanded: true,
                             iconSize: 26,
                             elevation: 10,
-                            style: const TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black, fontSize: 10),
                             underline: Container(
                               height: 2,
                               color: Colors.transparent,
@@ -389,10 +390,12 @@ class _AddPredefinedCheckStatefulViewState extends State<AddPredefinedCheckState
                     child: Card(
                         color: Colors.white,
                         child: Padding(
-                          padding: EdgeInsets.all(15.0),
+                          padding: EdgeInsets.all(10.0),
                           child: TextField(
                             maxLines: 4,
-                            decoration: InputDecoration.collapsed(hintText: "PLEASE MENTION DETAILS "),
+                            decoration: InputDecoration.collapsed(hintText: "PLEASE MENTION DETAILS ",
+                              hintStyle: TextStyle(fontSize: 12)
+                            ),
                           ),
                         )
                     ),

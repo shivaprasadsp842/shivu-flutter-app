@@ -18,20 +18,20 @@ class _RatingState extends State<Rating> {
         //backgroundColor:  Color(0x2EAEABAB),
         backgroundColor:  Colors.white,
         appBar: AppBar(
-          leading: InkWell(
-            onTap: () {
-              // Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  ChatScreen()),
-              );
-            },
-
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.grey,
-            ),
-          ),
+          // leading: InkWell(
+          //   onTap: () {
+          //     // Navigator.pop(context);
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) =>  ChatScreen()),
+          //     );
+          //   },
+          //
+          //   child: Icon(
+          //     Icons.arrow_back_ios,
+          //     color: Colors.grey,
+          //   ),
+          // ),
           backgroundColor: Colors.black,
           elevation: 0,
           title:  Stack(
@@ -39,7 +39,7 @@ class _RatingState extends State<Rating> {
 
               Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(0, 015, 0, 10),
                   child: Text(
                     'YOUR REVIEW MATTERS THE MOST',
                     style: TextStyle(color: Colors.white,
@@ -123,7 +123,7 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                     padding: const EdgeInsets.fromLTRB(10, 10, 00, 10),
                     child: Text(
                       "Rajiv Talreja", style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 20,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -134,6 +134,7 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+
                     IconButton(icon: Icon(Icons.star,size: 40,color: Colors.yellow,),
                       onPressed: () {
 
@@ -171,32 +172,59 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.sentiment_dissatisfied_outlined,size: 40,color: Colors.yellow,),
-                      onPressed: () {
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Image.asset("assets/img_14.png"),
+                        onPressed: () {
 
-                      },
+                        },
+                      ),
                     ),
 
                     SizedBox(width: 10),
-                    IconButton(icon: Icon(Icons.emoji_emotions,size: 40,color: Colors.yellow,),
-                      onPressed: () {
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Image.asset("assets/img_15.png"),
+                        onPressed: () {
 
-                      },
-                    ),SizedBox(width: 10),
-                    IconButton(icon: Icon(Icons.emoji_emotions_outlined,size: 40,color: Colors.yellow,),
-                      onPressed: () {
+                        },
+                      ),
+                    ),
 
-                      },
-                    ),SizedBox(width: 10),
-                    IconButton(icon: Icon(Icons.tag_faces_sharp,size: 40,color: Colors.yellow,),
-                      onPressed: () {
 
-                      },
-                    ),SizedBox(width: 10),
-                    IconButton(icon: Icon(Icons.tag_faces_sharp,size: 40,color: Colors.yellow,),
-                      onPressed: () {
+                    SizedBox(width: 10),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Image.asset("assets/img_16.png"),
+                        onPressed: () {
 
-                      },
+                        },
+                      ),
+                    ),
+
+                    SizedBox(width: 10),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Image.asset("assets/img_17.png"),
+                        onPressed: () {
+
+                        },
+                      ),
+                    ),
+
+                    SizedBox(width: 10),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: Image.asset("assets/img_18.png"),
+                        onPressed: () {
+
+                        },
+                      ),
                     ),
 
                   ],
@@ -211,7 +239,7 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                   alignment: Alignment.centerLeft,
                   child: Container(
 
-                    padding: const EdgeInsets.fromLTRB(30, 0, 30, 10),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                     child: Card(
                       elevation: 10,
                         color: Colors.white,
@@ -220,7 +248,7 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                           child: TextField(
                             maxLines: 5,
                             decoration: InputDecoration.collapsed(hintText: "DESCRIBE YOUR EXPERIENCE",
-                                hintStyle: TextStyle(fontSize: 13, color: Colors.black45)),
+                                hintStyle: TextStyle(fontSize: 15, color: Colors.black45)),
                           ),
                         )
                     ),
@@ -251,7 +279,11 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black, // background
                             onPrimary: Colors.white, // foreground
-                            padding: const EdgeInsets.fromLTRB(50, 20, 50, 20),
+                            padding: const EdgeInsets.fromLTRB(50, 15, 50, 15),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+
                           ),
                           onPressed: () {
 
@@ -263,7 +295,7 @@ class _RatingStatefulViewState extends State<RatingStatefulView > {
                           child: const Text('Submit',
                             style: TextStyle(
                               color:Colors.white,
-                              fontSize:15,
+                              fontSize:20,
 
                               fontWeight: FontWeight.bold,
                             ),

@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: InkWell(
@@ -63,17 +64,18 @@ class _HomePageState extends State<HomePage> {
             color: Colors.black,
           ),
         ),
-        title: const Text('OTP Verification', style: TextStyle(color: Colors.black,)),
+        title: const Text('OTP Verification', style: TextStyle(color: Colors.black,fontFamily: 'Inter',
+            )),
         elevation: 0,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 70,
+            height: 30,
           ),
-          const Text('We have sent a verification code to'),
-          const Text('+91 - 9844404142', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,),),
+          const Text('We have sent a verification code to',  style: TextStyle(fontSize: 15, ),),
+          const Text('+91 - 9844404142', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),),
           const SizedBox(
             height: 30,
           ),
@@ -90,7 +92,19 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: 50,
+          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Resend SMS in 19', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+              //   Text('Call me in 19', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+
+
+              ]
+          ),
+          SizedBox(
+            height: 50,
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -139,8 +153,8 @@ class OtpInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
-      width: 50,
+      height: 45,
+      width: 45,
       child: TextField(
         autofocus: autoFocus,
         textAlign: TextAlign.center,
@@ -151,7 +165,7 @@ class OtpInput extends StatelessWidget {
         decoration: const InputDecoration(
             border: OutlineInputBorder(),
             counterText: '',
-            hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)),
+            hintStyle: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold)),
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'chat_screen.dart';
+import 'check_chat_recharge.dart';
 
 class ChatRules extends StatefulWidget {
   const ChatRules({Key? key}) : super(key: key);
@@ -14,49 +15,93 @@ class _ChatRulesState extends State<ChatRules> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      //theme: new ThemeData(scaffoldBackgroundColor:  Color(0xFFEFEFEF)),
+      backgroundColor: Color(0xFFEFEFEF),
+      // theme: new ThemeData(scaffoldBackgroundColor:  ),
       appBar: AppBar(
+
+        leading: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  CheckChatRecharge()),
+            );
+          },
+
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25.0),
             topRight: Radius.circular(25.0),
           ),
         ),
-        title:  Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // IconButton(
-            //   icon: Icon(Icons.arrow_back, color:Colors.black, size:20),
-            //   onPressed: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
-            Image.asset('assets/arjun.png', height: 35,width: 35,
-                fit: BoxFit.cover),
-            SizedBox(width: 10,),
-            Column(
-              //padding: const EdgeInsets.all(8.0),
-              children: [
-                Text('Rajiv Talreja', style: TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold),),
-                Row(mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/rtm.png', height: 10,width: 10,fit: BoxFit.cover),
-                    Text('Online', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.bold),),
-                  ],
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(right: 16),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
                 ),
+                SizedBox(width: 2,),
+                CircleAvatar(
+                  child: Image(
+                    image: new AssetImage("assets/img_2.png"),
+                    width: 40,
+                    height: 40,
+                    color: null,
+                    //fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,
+                  ),
+                  maxRadius: 20,
+                ),
+                SizedBox(width: 12,),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Rajiv Talreja",style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
+                      SizedBox(height: 6,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 00, right: 0, top: 0, bottom:0),
+                        child: Row(
+                          children: [
+                            Image(
+                              image: new AssetImage("assets/online.png"),
+                              width: 10,
+                              height: 10,
+                              color: null,
+                              //fit: BoxFit.scaleDown,
+                              alignment: Alignment.center,
+                            ),
+                            SizedBox(width:5),
+                            Text('Online', style: TextStyle(
+                                fontSize: 12),),
+                          ],
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+                // Icon(Icons.settings,color: Colors.black54,),
+
               ],
             ),
-            // Icon (Icon.),
-          ],
-
+          ),
         ),
-
-
 
         actions: [
 Card(
-  color: Color(0xF5F5F5),
+  color: Color(0xE5E5E5E5),
 
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 17, 10, 10),
@@ -66,16 +111,16 @@ Card(
 
           PopupMenuButton<int>(
             itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Video Call')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('End Chat')),
-              new PopupMenuItem<int>(
-                  value: 3, child: new Text('Rate Now')),
-             new PopupMenuItem<int>(
-                  value: 4, child: new Text('Report')),
-             new PopupMenuItem<int>(
-                  value: 5, child: new Text('Delete Chat'))
+             //  new PopupMenuItem<int>(
+             //      value: 1, child: new Text('Video Call')),
+             //  new PopupMenuItem<int>(
+             //      value: 2, child: new Text('End Chat')),
+             //  new PopupMenuItem<int>(
+             //      value: 3, child: new Text('Rate Now')),
+             // new PopupMenuItem<int>(
+             //      value: 4, child: new Text('Report')),
+             // new PopupMenuItem<int>(
+             //      value: 5, child: new Text('Delete Chat'))
             ],
             // onSelected: (int value) {
             //   setState(() { _value = value; });
@@ -203,8 +248,19 @@ Card(
         ),
       ),
       bottomSheet: Container(
-        color: Colors.white,
+        //color: Colors.transparent,
+
         height: 500.0,
+        decoration: BoxDecoration(
+          border: Border.all(color: Color(0xeeeeeeee), width: 1),
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+            boxShadow: [BoxShadow(
+              color: Colors.grey,
+              blurRadius: 5.0,
+            ),]
+          //shape: BoxShape.circle,
+        ),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           // mainAxisSize: MainAxisSize.min,
@@ -231,15 +287,10 @@ Card(
 
             Padding(
 
-              padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
+              padding: const EdgeInsets.fromLTRB(0.0, 10, 10, 10),
               child:  Container(
-                padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white, width: 1),
-                  borderRadius: BorderRadius.circular(05),
-                  color: Colors.white,
-                  //shape: BoxShape.circle,
-                ),
+                padding: const EdgeInsets.fromLTRB(05.0, 10, 10, 10),
+
                 child: Column(
                   children: <Widget>[
                     new ListTile(
@@ -275,7 +326,7 @@ Card(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.teal, // background
                     onPrimary: Colors.white, // foreground
-                    padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
                   ),
                   onPressed: () {
                     // Navigator.pop(context);
@@ -287,7 +338,8 @@ Card(
                   child: const Text('GOT IT, CONTINUE',
                     style: TextStyle(
                       color:Colors.white,
-                      fontSize:12,
+                      fontSize:13,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
 

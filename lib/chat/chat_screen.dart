@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_ui/chat/rating.dart';
 
+import 'chat_rules.dart';
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
 
@@ -11,12 +13,12 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   void choiceAction(int choice) {
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Rating()),
-        );
-
+if(choice==2) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Rating()),
+  );
+}
   }
   @override
   Widget build(BuildContext context) {
@@ -24,72 +26,221 @@ class _ChatScreenState extends State<ChatScreen> {
 
       //theme: new ThemeData(scaffoldBackgroundColor:  Color(0xFFEFEFEF)),
       appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  ChatRules()),
+            );
+          },
+
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25.0),
             topRight: Radius.circular(25.0),
           ),
         ),
-        title:  Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // IconButton(
-            //   icon: Icon(Icons.arrow_back, color:Colors.black, size:20),
-            //   onPressed: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
-            SizedBox(width: 10,),
-            Image.asset('assets/arjun.png', height: 35,width: 35,
-                fit: BoxFit.cover),
-            SizedBox(width: 10,),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              //padding: const EdgeInsets.all(8.0),
-              children: [
-                Text('Rajiv Talreja', style: TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold),),
-                Row(mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/online.png', height: 10,width: 10,fit: BoxFit.cover),
-                    SizedBox(width:5,),
-                    Text('Online', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.bold),),
-                  ],
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(right: 16),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back_ios,color: Colors.white,),
                 ),
+                SizedBox(width: 2,),
+                CircleAvatar(
+                  child: Image(
+                    image: new AssetImage("assets/img_2.png"),
+                    width: 40,
+                    height: 40,
+                    color: null,
+                    //fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,
+                  ),
+                  maxRadius: 20,
+                ),
+                SizedBox(width: 12,),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Rajiv Talreja",style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
+                      SizedBox(height: 6,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 00, right: 0, top: 0, bottom:0),
+                        child: Row(
+                          children: [
+                            Image(
+                              image: new AssetImage("assets/online.png"),
+                              width: 10,
+                              height: 10,
+                              color: null,
+                              //fit: BoxFit.scaleDown,
+                              alignment: Alignment.center,
+                            ),
+                            SizedBox(width:5),
+                            Text('Online', style: TextStyle(
+                                fontSize: 12),),
+                          ],
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+                // Icon(Icons.settings,color: Colors.black54,),
+
               ],
             ),
-            // Icon (Icon.),
-          ],
-
+          ),
         ),
-
 
 
         actions: [
           Card(
-            color: Color(0xF5F5F5),
+            color: Color(0xE5E5E5E5),
 
             child: Padding(
               padding: const EdgeInsets.fromLTRB(05.0, 10, 5, 10),
-              child:  Text('00 : 00 : 00', style: TextStyle(fontWeight: FontWeight.bold),),
+              child:  Text('00 : 00 : 08', style: TextStyle(fontWeight: FontWeight.bold),),
             ),
           ),
-          PopupMenuButton<int>(
-            itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Video Call')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('End Chat')),
-              new PopupMenuItem<int>(
-                  value: 3, child: new Text('Rate Now')
+          PopupMenuButton(
+            elevation: 50,
+            color:Colors.white,
+
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: SizedBox(
+              width: 40,
+              height: 49,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: Container(
+                  // color: Theme.of(context).colorScheme.button,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.more_vert,
+                          color: Colors.black,
+                          size: 20,
+                        ),
+                        Spacer(),
+
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              new PopupMenuItem<int>(
-                  value: 4, child: new Text('Report')
-              ),
-              new PopupMenuItem<int>(
-                  value: 5, child: new Text('Delete Chat'))
+            ),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  value: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.voice_chat_rounded,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text(' End Chat',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                          child: Text(' Rate Now',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.person_add_alt_1_outlined,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Report',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.block,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Block ',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.delete_forever_rounded,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Delete Chat ',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  ))
             ],
             onSelected: choiceAction,
-          )
+          ),
 
         ],
         iconTheme: IconThemeData(color: Colors.black),
@@ -118,6 +269,12 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Text('Tell me about you..How is your week going?'),),),),
 
 
+
+
+
+
+
+
                 ],
                 ),
               ),
@@ -133,11 +290,12 @@ class _ChatScreenState extends State<ChatScreen> {
       bottomSheet: Container(
         //color: Color(0x2EAEABAB),
         //color: Colors.white,
+        //padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
         height: 50.0,
         child:  Align(
-          alignment: Alignment.bottomLeft,
+          alignment: Alignment.center,
           child: Container(
-            padding: EdgeInsets.only(left: 10,bottom: 10,top: 10),
+            padding: EdgeInsets.only(left: 10,bottom: 20,top: 10),
             height: 50,
             width: double.infinity,
             //color: Colors.green,
@@ -158,12 +316,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 SizedBox(width: 15,),
                 Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: "Type a message",
-                        hintStyle: TextStyle(color: Color(0xffA5A4A4)),
-                        border: InputBorder.none
-                    ),
+                  child:TextField(
+                    maxLines: 2,
+                    decoration: InputDecoration.collapsed(hintText: "Type a message"),
                   ),
                 ),
                 SizedBox(width: 15,),
@@ -175,13 +330,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 FloatingActionButton(
                   onPressed: (){},
-                  child: Icon(Icons.camera_alt_sharp,color: Colors.grey,size: 18,),
+                  child: Icon(Icons.camera_alt_sharp,color: Colors.black,size: 20,),
                   backgroundColor: Colors.white,
                   elevation: 0,
                 ),
                 FloatingActionButton(
                   onPressed: (){},
-                  child: Icon(Icons.send,color: Colors.white,size: 20,),
+                  child: Icon(Icons.mic,color: Colors.white,size: 20,),
                   backgroundColor: Colors.teal,
                   elevation: 0,
                 ),

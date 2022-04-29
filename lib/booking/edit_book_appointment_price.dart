@@ -74,7 +74,9 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
         key: key,
         length: 7,
         child: Scaffold(
+          extendBodyBehindAppBar: true,
       appBar: AppBar(
+
         leading: InkWell(
           onTap: () {
             // Navigator.pop(context);
@@ -86,47 +88,60 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
 
           child: Icon(
             Icons.arrow_back_ios,
-            color: Colors.grey,
+            color: Colors.white,
           ),
         ),
         iconTheme: IconThemeData(
           color: Colors.blue, //change your color here
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         actions: [
-
-
-          PopupMenuButton<int>(
-            itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Copy Profile Link')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Share Proflie')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Report User')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Block User')),
-              // new PopupMenuItem<int>(
-              //     value: 3, child: new Text('Item Three')),
-              // new PopupMenuItem<int>(
-              //     value: 4, child: new Text('I am Item Four'))
-            ],
-            // onSelected: (int value) {
-            //   setState(() { _value = value; });
-            // }
-          )
-        ],
-        title: Center(
-          child:    Container(
+          Container(
+            //color: Colors.grey,
+            height: 20,
+            width:25,
+            margin: EdgeInsets.all(15),
+            padding: EdgeInsets.all(0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 2),
-              color: Colors.yellow,
-              shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(width: 1, color: Colors.white)),
+            child:FloatingActionButton(
+              backgroundColor: Colors.transparent,
+
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0))
+              ),
+
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DefineAppointmentCharges()),
+                );
+              },
+              // Display the correct icon depending on the state of the player.
+              // child: Icon(
+              //   _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+              // ),
+              child: Icon(Icons.edit, size: 15,
+              ),
             ),
-            child:
-            FloatingActionButton(
-              backgroundColor: Colors.blue,
-              shape: CircleBorder(),
+          ),
+        ],
+        title:   Center(
+          child:   Container(
+            //color: Colors.grey,
+            height: 35,
+            width:35,
+            margin: EdgeInsets.all(0),
+            padding: EdgeInsets.all(0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                border: Border.all(width: 2, color: Colors.white)),
+            child:  FloatingActionButton(
+              backgroundColor: Colors.transparent,
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.all(Radius.circular(50.0))
+              //   ),
 
               onPressed: () {
                 // Wrap the play or pause in a call to `setState`. This ensures the
@@ -144,11 +159,11 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
               // Display the correct icon depending on the state of the player.
               child: Icon(
                 _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-                // color: Colors.red,
               ),
             ),
           ),
         ),
+        centerTitle: true,
       ),
       // Use a FutureBuilder to display a loading spinner while waiting for the
       // VideoPlayerController to finish initializing.
@@ -156,7 +171,10 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
         child: IntrinsicHeight(
           child: Column(
             children: <Widget>[
-              FutureBuilder(
+            Container(
+            height: 350,
+            width:double.infinity,
+            child:  FutureBuilder(
                 future: _initializeVideoPlayerFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
@@ -176,6 +194,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                   }
                 },
               ),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15.0, 10, 10, 10),
                 child: Align(
@@ -184,7 +203,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                     child: Text(
                       "Rating and reviews",
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 12,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -203,7 +222,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                   child:Container(
                     padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Column(
                           children: <Widget>[
@@ -214,13 +233,14 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 fontWeight: FontWeight.bold,
                               ),),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
-                                Icon(Icons.star,size: 20,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+                                Icon(Icons.star,size: 15,color: Colors.green,),
+
                               ],
 
                             ),
@@ -229,7 +249,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                             ),
                             Text('536236',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 10,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),),
@@ -237,7 +257,9 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
 
                         ),
 
-
+                        SizedBox(
+                          width: 10,
+                        ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,7 +272,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
 
                                 Text('5',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -261,7 +283,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -282,7 +304,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('4',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -293,7 +315,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -312,7 +334,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('3',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -323,7 +345,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -342,7 +364,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('2',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -353,7 +375,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -371,7 +393,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                               children: <Widget>[
                                 Text('1',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 10,
                                     color: Colors.black54,
                                     fontWeight: FontWeight.bold,
                                   ),),
@@ -382,7 +404,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 Container(
                                   margin: EdgeInsets.symmetric(vertical: 03),
                                   width: 180,
-                                  height: 15,
+                                  height: 12,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     child: LinearProgressIndicator(
@@ -413,6 +435,10 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
               SizedBox(
                 height:10,
               ),
+
+              SizedBox(
+                height:10,
+              ),
               PreferredSize(
                   child: TabBar(
                       isScrollable: true,
@@ -421,12 +447,12 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                       tabs: [
                         Tab(
                           child:    Container(
-                            /// width: 80,
+                            width: 80,
                             //color: Colors.green,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black12, width: 1),
                               borderRadius: BorderRadius.circular(20),
-                              //color: Colors.yellow,
+                              color: Color(0xB270EEDF),
                               //shape: BoxShape.circle,
                             ),
                             // padding: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
@@ -434,8 +460,7 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                                 label: const Text('All'),
                                 labelStyle: const TextStyle(color: Colors.black),
                                 // avatar: const Icon(Icons.color_lens_outlined, color: Colors.white),
-                                backgroundColor: Colors.white
-                                ,
+                                backgroundColor:  Color(0xB270EEDF),
                                 onPressed: () {
                                   showSnackBar(context);
                                 }
@@ -474,10 +499,10 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                             ),
                             child:ActionChip(
 
-                                label: const Text('5'),
+
                                 avatar: const Icon(Icons.star, color: Colors.black),
                                 labelStyle: const TextStyle(color: Colors.black),
-
+                                label: const Text('5'),
                                 backgroundColor: Colors.white,
                                 //tooltip: 'This is tooltip',
                                 onPressed: () {
@@ -651,9 +676,9 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                         child:  Container(
                           padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12, width: 1),
+                            border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                             borderRadius: BorderRadius.circular(05),
-                            color: Colors.black12,
+                            color: Color(0xF6F6F6F6),
                             //shape: BoxShape.circle,
                           ),
                           child:Text(
@@ -733,9 +758,9 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                             child:  Container(
                               padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12, width: 1),
+                                border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                                 borderRadius: BorderRadius.circular(05),
-                                color: Colors.black12,
+                                color: Color(0xF6F6F6F6),
                                 //shape: BoxShape.circle,
                               ),
                               child:Text(
@@ -754,8 +779,10 @@ class _BookVideoPlayerScreenState extends State<BookVideoPlayerScreen> {
                 ),
               ),
 
+              SizedBox(
+                height:150,
+              ),
 
-SizedBox(height:150),
 
 
 
@@ -763,6 +790,10 @@ SizedBox(height:150),
           ),
         ),
       ),
+
+
+
+
           bottomSheet: Container(
             color: Colors.white,
             height: 150.0,

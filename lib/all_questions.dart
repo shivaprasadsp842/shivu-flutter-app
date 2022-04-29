@@ -70,6 +70,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       key: key,
         length: 7,
         child: Scaffold(
+          extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -81,77 +82,172 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
           child: Icon(
             Icons.arrow_back_ios,
-            color: Colors.grey,
+            color: Colors.white,
           ),
         ),
         iconTheme: IconThemeData(
           color: Colors.blue, //change your color here
         ),
-        backgroundColor: Colors.white,
-
+        backgroundColor: Colors.transparent,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
         actions: [
-
-
           PopupMenuButton(
-            itemBuilder: (context) => [
-              new PopupMenuItem(
-                  value: 1, child: new Text('Copy Profile Link'),
-                onTap: () {
-                  Clipboard.setData(ClipboardData(text: "My Profile Link"));
-                  key.currentState?.showSnackBar(
-                      new SnackBar(content: new Text("Copied to Clipboard"),));
-                },),
-              new PopupMenuItem(
-                  value: 2, child: new Text('Share Proflie')),
-              new PopupMenuItem(
-                  value: 2, child: new Text('Report User')),
-              new PopupMenuItem(
-                  value: 2, child: new Text('Block User')),
-              // new PopupMenuItem<int>(
-              //     value: 3, child: new Text('Item Three')),
-              // new PopupMenuItem<int>(
-              //     value: 4, child: new Text('I am Item Four'))
-            ],
-            // onSelected: (int value) {
-            //   setState(() { _value = value; });
-            // }
-          )
-        ],
-        title:  Center(
-        child: Container(
-          height: 55,
-          width:55,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 2),
-            color: Colors.yellow,
-            shape: BoxShape.circle,
-          ),
-          child:
-          FloatingActionButton(
-            backgroundColor: Colors.blue,
-            shape: CircleBorder(),
+            elevation: 50,
+            color:Colors.white,
 
-            onPressed: () {
-              // Wrap the play or pause in a call to `setState`. This ensures the
-              // correct icon is shown.
-              setState(() {
-                // If the video is playing, pause it.
-                if (_controller.value.isPlaying) {
-                  _controller.pause();
-                } else {
-                  // If the video is paused, play it.
-                  _controller.play();
-                }
-              });
-            },
-            // Display the correct icon depending on the state of the player.
-            child: Icon(
-              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-              // color: Colors.red,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: SizedBox(
+              width: 40,
+              height: 49,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: Container(
+                  // color: Theme.of(context).colorScheme.button,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+
+                            ImageIcon(
+                              AssetImage("assets/Group 686.png"),
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ],
+                        ),
+
+                        Spacer(),
+
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  value: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        // Icon(
+                        //     Icons.link,
+                        //     color: Color(0x7D000000),
+                        //     size: 20,
+                        //   ),
+
+                        ImageIcon(
+                          AssetImage("assets/Vector.png"),
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          child: Text('Copy Profile Link',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        ImageIcon(
+                          AssetImage("assets/Group 724.png"),
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                          child: Text(' Share Proflie',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        ImageIcon(
+                          AssetImage("assets/Group 726.png"),
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Report User',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  )),
+              PopupMenuItem(
+                  value: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.block,
+                          color: Color(0x7D000000),
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(' Block User',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                        ),
+                      ],
+                    ),
+                  ))
+            ],
+          ),
+
+        ],
+        title:   Center(
+          child:   Container(
+            //color: Colors.grey,
+            height: 35,
+            width:35,
+            margin: EdgeInsets.all(0),
+            padding: EdgeInsets.all(0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                border: Border.all(width: 2, color: Colors.white)),
+            child:  FloatingActionButton(
+              backgroundColor: Colors.transparent,
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.all(Radius.circular(50.0))
+              //   ),
+
+              onPressed: () {
+                // Wrap the play or pause in a call to `setState`. This ensures the
+                // correct icon is shown.
+                setState(() {
+                  // If the video is playing, pause it.
+                  if (_controller.value.isPlaying) {
+                    _controller.pause();
+                  } else {
+                    // If the video is paused, play it.
+                    _controller.play();
+                  }
+                });
+              },
+              // Display the correct icon depending on the state of the player.
+              child: Icon(
+                _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+              ),
             ),
           ),
         ),
-      ),
       ),
       // Use a FutureBuilder to display a loading spinner while waiting for the
       // VideoPlayerController to finish initializing.
@@ -159,25 +255,29 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     child: IntrinsicHeight(
     child: Column(
         children: <Widget>[
-          FutureBuilder(
-            future: _initializeVideoPlayerFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                // If the VideoPlayerController has finished initialization, use
-                // the data it provides to limit the aspect ratio of the video.
-                return AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  // Use the VideoPlayer widget to display the video.
-                  child: VideoPlayer(_controller),
-                );
-              } else {
-                // If the VideoPlayerController is still initializing, show a
-                // loading spinner.
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
+          Container(
+            height: 350,
+            width:double.infinity,
+            child: FutureBuilder(
+              future: _initializeVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  // If the VideoPlayerController has finished initialization, use
+                  // the data it provides to limit the aspect ratio of the video.
+                  return AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    // Use the VideoPlayer widget to display the video.
+                    child: VideoPlayer(_controller),
+                  );
+                } else {
+                  // If the VideoPlayerController is still initializing, show a
+                  // loading spinner.
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
           ),
       Padding(
         padding: const EdgeInsets.fromLTRB(15.0, 10, 10, 10),
@@ -425,12 +525,12 @@ SizedBox(
                   tabs: [
                     Tab(
                       child:    Container(
-                       /// width: 80,
+                        width: 80,
                         //color: Colors.green,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black12, width: 1),
                           borderRadius: BorderRadius.circular(20),
-                          //color: Colors.yellow,
+            color: Color(0xB270EEDF),
                           //shape: BoxShape.circle,
                         ),
                         // padding: const EdgeInsets.fromLTRB(10.0, 0, 10, 10),
@@ -438,8 +538,8 @@ SizedBox(
                             label: const Text('All'),
                             labelStyle: const TextStyle(color: Colors.black),
                             // avatar: const Icon(Icons.color_lens_outlined, color: Colors.white),
-                            backgroundColor: Colors.white
-                            ,
+                            backgroundColor:  Color(0xB270EEDF),
+
                             onPressed: () {
                               showSnackBar(context);
                             }
@@ -449,7 +549,7 @@ SizedBox(
                     //tab2 positive
                     Tab(
                       child:  Container(
-                       // width: 80,
+                        width: 80,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black12, width: 1),
                           borderRadius: BorderRadius.circular(20),
@@ -660,9 +760,9 @@ SizedBox(
              child:  Container(
                padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12, width: 1),
+                  border: Border.all(color: Color(0xF6F6F6F6), width: 1),
                   borderRadius: BorderRadius.circular(05),
-                  color: Colors.black12,
+                  color: Color(0xF6F6F6F6),
                   //shape: BoxShape.circle,
                 ),
               child:Text(
@@ -743,9 +843,9 @@ SizedBox(
                     child:  Container(
                       padding: const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12, width: 1),
+                        border: Border.all(color:  Color(0xF6F6F6F6), width: 1),
                         borderRadius: BorderRadius.circular(05),
-                        color: Colors.black12,
+                        color:  Color(0xF6F6F6F6),
                         //shape: BoxShape.circle,
                       ),
                       child:Text(
@@ -775,7 +875,7 @@ SizedBox(height:140),
       ),
 
           bottomSheet: Container(
-            color: Colors.black12,
+          //  color: Colors.black12,
             height: 140.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

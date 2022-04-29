@@ -24,14 +24,15 @@ class _BecomeMasterStep2State extends State<BecomeMasterStep2> {
   //   "LinkedIn"
   // ];
 
-  String? dropdownValueplatform = 'CHOOSE PLACE';
+  String? dropdownValueplatform = 'Choose Platform';
   List<String> dropdownItems = <String>[
-    'CHOOSE PLACE',
-    'Any place',
-    'Your Suggested Place',
-    'My Office / My Place',
-    "Your Office / Your Place",
-    "Hotel / Cafe / Party Hall"
+    'Choose Platform',
+      'Instagram',
+      'Facebook',
+      'Whatsapp',
+      'Yahoo',
+      "Youtube",
+      "LinkedIn"
   ];
   @override
   Widget build(BuildContext context) {
@@ -163,7 +164,7 @@ class _BecomeMasterStep2State extends State<BecomeMasterStep2> {
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(12.0)),
                             borderSide: BorderSide(color: Colors.black45)),
-                        hintText: '',
+                        hintText: 'Paste profile url/ link',
                       ),
                     ),
                   ),
@@ -171,13 +172,13 @@ class _BecomeMasterStep2State extends State<BecomeMasterStep2> {
                     alignment: Alignment.centerRight,
                     child: Container(
                       height: 55,
-                      padding: const EdgeInsets.fromLTRB(45, 10, 45, 05),
-                      // decoration: ShapeDecoration(
-                      //   shape: RoundedRectangleBorder(
-                      //     side: BorderSide(width: 1.0, style: BorderStyle.solid),
-                      //     borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                      //   ),
-                      // ),
+                      padding: const EdgeInsets.fromLTRB(0, 10, 40, 0),
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                      ),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: Colors.black54, // background

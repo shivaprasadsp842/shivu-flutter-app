@@ -13,11 +13,11 @@ class AllPredefinedAppointment extends StatelessWidget {
     return MaterialApp(
       //title: _title,
       home:Scaffold(
-        backgroundColor:  Color(0xB2E7CC86),
+        backgroundColor:  Color(0xFFE7CC86),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0), // here the desired height
           child:  AppBar(
-            backgroundColor: Color(0xEBBF8B),
+            backgroundColor: Color(0xFFE7CC86),
             elevation: 0,
             title: IconButton(
               icon: Icon(Icons.arrow_back, color:Colors.white, size:20),
@@ -79,14 +79,14 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                        alignment: Alignment.centerLeft,
 
                        child: Container(
-                         padding: const EdgeInsets.fromLTRB(20, 10, 40, 15),
+                         padding: const EdgeInsets.fromLTRB(20, 15, 15, 15),
                          child:  Text("Create New PD-Appointment",
-                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: Colors.black),),
+                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19, color: Colors.black),),
 
                        ),
                      ),
                      IconButton(
-                       icon: Icon(Icons.add_circle_outlined, color:Colors.black, size:30),
+                       icon: Icon(Icons.add_circle_outlined, color:Color(0xFFBB8CD1), size:35),
                        onPressed: () {
                          Navigator.push(
                            context,
@@ -200,7 +200,7 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                 child: ElevatedButton(
 
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.lightGreen, // background
+                                    primary: Color(0xff8FDA30), // background
                                     onPrimary: Colors.black, // foreground
                                     padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
                                   ),
@@ -238,9 +238,9 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                 child: ElevatedButton(
 
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.orange[900], // background
+                                    primary: Color(0xffD08328), // background
                                     onPrimary: Colors.black, // foreground
-                                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                    padding: const EdgeInsets.fromLTRB(15, 0, 18, 0),
                                   ),
                                   onPressed: () {
                                     Navigator.push(
@@ -248,7 +248,7 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                       MaterialPageRoute(builder: (context) => BookingAppointmentView()),
                                     );
                                   },
-                                  child: const Text('View Details',
+                                  child: const Text('EDIT DETAILS',
                                     style: TextStyle(
                                       color:Colors.white,
                                       fontSize:12,
@@ -343,7 +343,7 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                 child: ElevatedButton(
 
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.lightGreen, // background
+                                    primary: Color(0xff8FDA30), // background
                                     onPrimary: Colors.black, // foreground
                                     padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
                                   ),
@@ -381,9 +381,9 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                 child: ElevatedButton(
 
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.orange[900], // background
+                                    primary: Color(0xffD08328), // background
                                     onPrimary: Colors.black, // foreground
-                                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                    padding: const EdgeInsets.fromLTRB(15, 0, 18, 0),
                                   ),
                                   onPressed: () {
                                     Navigator.push(
@@ -391,7 +391,7 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                       MaterialPageRoute(builder: (context) => BookingAppointmentView()),
                                     );
                                   },
-                                  child: const Text('View Details',
+                                  child: const Text('EDIT DETAILS',
                                     style: TextStyle(
                                       color:Colors.white,
                                       fontSize:12,
@@ -484,7 +484,7 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                 child: ElevatedButton(
 
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.lightGreen, // background
+                                    primary: Color(0xff8FDA30),// background
                                     onPrimary: Colors.black, // foreground
                                     padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
                                   ),
@@ -522,9 +522,9 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                 child: ElevatedButton(
 
                                   style: ElevatedButton.styleFrom(
-                                    primary: Colors.orange[900], // background
+                                    primary: Color(0xffD08328),  // background
                                     onPrimary: Colors.black, // foreground
-                                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                    padding: const EdgeInsets.fromLTRB(15, 0, 18, 0),
                                   ),
                                   onPressed: () {
                                     Navigator.push(
@@ -532,7 +532,7 @@ class _PredefinedCheckStatefulState extends State<PredefinedCheckStateful> {
                                       MaterialPageRoute(builder: (context) => BookingAppointmentView()),
                                     );
                                   },
-                                  child: const Text('View Details',
+                                  child: const Text('EDIT DETAILS',
                                     style: TextStyle(
                                       color:Colors.white,
                                       fontSize:12,

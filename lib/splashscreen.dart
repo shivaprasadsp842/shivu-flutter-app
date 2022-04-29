@@ -43,7 +43,7 @@ class StartState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(padding: EdgeInsets.only(top: 90.0)),
+            Padding(padding: EdgeInsets.only(top: 70.0)),
             Container(
               child: Image(
                 image: new AssetImage("assets/img_8.png"),
@@ -86,8 +86,8 @@ class StartState extends State<SplashScreen> {
             Container(
               padding: const EdgeInsets.fromLTRB(10, 05, 10, 05),
               child: Image(
-                image: new AssetImage("assets/logo1.png"),
-                height: 230,
+                image: new AssetImage("assets/undraw_dreamer_re_9tua 1.png"),
+                height: 250,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

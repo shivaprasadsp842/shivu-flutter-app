@@ -81,6 +81,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         length: 3,
         child:
       Scaffold(
+        extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -92,7 +93,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
           child: Icon(
             Icons.arrow_back_ios,
-            color: Colors.grey,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -103,37 +104,125 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         // ),
        // iconTheme: IconThemeData(color: Colors.green),
         actions: [
+        PopupMenuButton(
+        elevation: 50,
+        color:Colors.white,
 
-          // Icon(Icons.navigate_before,
-          //   color: Colors.blue.shade400,), Padding(
-          //   padding: EdgeInsets.fromLTRB(10.0,0,170,0),
-          //   //child: Text('Hello World!'),
-          // ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: SizedBox(
+          width: 40,
+          height: 49,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(25),
+            child: Container(
+             // color: Theme.of(context).colorScheme.button,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
 
+                        ImageIcon(
+                          AssetImage("assets/Group 686.png"),
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                      ],
+                    ),
 
+                    Spacer(),
 
-          // Icon(Icons.edit,
-          //   color: Colors.blue.shade400,
-          // ),
-          PopupMenuButton<int>(
-            itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
-              new PopupMenuItem<int>(
-                  value: 1, child: new Text('Copy Profile Link')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Share Proflie')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Report User')),
-              new PopupMenuItem<int>(
-                  value: 2, child: new Text('Block User')),
-              // new PopupMenuItem<int>(
-              //     value: 3, child: new Text('Item Three')),
-              // new PopupMenuItem<int>(
-              //     value: 4, child: new Text('I am Item Four'))
-            ],
-            // onSelected: (int value) {
-            //   setState(() { _value = value; });
-            // }
-          )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        itemBuilder: (context) => [
+          PopupMenuItem(
+              value: 1,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                child: Row(
+                  children: [
+                  // Icon(
+                  //     Icons.link,
+                  //     color: Color(0x7D000000),
+                  //     size: 20,
+                  //   ),
+
+                    ImageIcon(
+                      AssetImage("assets/Vector.png"),
+                      color: Color(0x7D000000),
+                      size: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                      child: Text('Copy Profile Link',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                    ),
+                  ],
+                ),
+              )),
+          PopupMenuItem(
+              value: 2,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      AssetImage("assets/Group 724.png"),
+                      color: Color(0x7D000000),
+                      size: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                      child: Text(' Share Proflie',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600), ),
+                    ),
+                  ],
+                ),
+              )),
+          PopupMenuItem(
+              value: 3,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      AssetImage("assets/Group 726.png"),
+                      color: Color(0x7D000000),
+                      size: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Text(' Report User',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                    ),
+                  ],
+                ),
+              )),
+          PopupMenuItem(
+              value: 4,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.block,
+                      color: Color(0x7D000000),
+                      size: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Text(' Block User',  style: TextStyle( color: Color(0x7D000000), fontSize: 15, fontWeight: FontWeight.w600),),
+                    ),
+                  ],
+                ),
+              ))
+        ],
+      ),
+
         ],
 
         // iconTheme: IconThemeData(
@@ -146,15 +235,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         title:   Center(
           child:   Container(
             //color: Colors.grey,
-            height: 55,
-            width:55,
+            height: 35,
+            width:35,
             margin: EdgeInsets.all(0),
             padding: EdgeInsets.all(0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                border: Border.all(width: 3, color: Colors.white)),
+                border: Border.all(width: 2, color: Colors.white)),
             child:  FloatingActionButton(
-              //  backgroundColor: Colors.white,
+               backgroundColor: Colors.transparent,
               //   shape: RoundedRectangleBorder(
               //       borderRadius: BorderRadius.all(Radius.circular(50.0))
               //   ),
@@ -185,37 +274,44 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       // VideoPlayerController to finish initializing.
       body:SingleChildScrollView(
         child: IntrinsicHeight(
+
           child: Column(
              children: <Widget>[
-      FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // If the VideoPlayerController has finished initialization, use
-            // the data it provides to limit the aspect ratio of the video.
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              // Use the VideoPlayer widget to display the video.
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            // If the VideoPlayerController is still initializing, show a
-            // loading spinner.
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+
 
 
                Stack(
+                 
                  children: <Widget>[
+                   Container(
+                     height: 350,
+                     width:double.infinity,
+                     child: FutureBuilder(
+                       future: _initializeVideoPlayerFuture,
+                       builder: (context, snapshot) {
+                         if (snapshot.connectionState == ConnectionState.done) {
+                           // If the VideoPlayerController has finished initialization, use
+                           // the data it provides to limit the aspect ratio of the video.
+                           return AspectRatio(
+                             aspectRatio: _controller.value.aspectRatio,
+                             // Use the VideoPlayer widget to display the video.
+                             child: VideoPlayer(_controller),
+                           );
+                         } else {
+                           // If the VideoPlayerController is still initializing, show a
+                           // loading spinner.
+                           return const Center(
+                             child: CircularProgressIndicator(),
+                           );
+                         }
+                       },
+                     ),
+                   ),
+                   Container(
+                     width: double.infinity,
+                     padding: const EdgeInsets.fromLTRB(0, 320, 0, 0),
 
-                   Padding(
-                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                      child:  Card(
-
                        // margin: new EdgeInsets.fromLTRB(50.0, 35, 50, 24),
                        elevation: 20,
                        shape: RoundedRectangleBorder(
@@ -232,6 +328,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                              Align(
                                alignment: Alignment.centerLeft,
                                child: Container(
+                                 width: double.infinity,
                                  child: Text(
                                    "About",
                                    style: TextStyle(
@@ -254,7 +351,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                              ), //Textstyle
                              ), //Text
                              SizedBox(
-                               height: 10,
+                               height: 200 ,
                              ), //SizedBox
                              //SizedBox
                            ],
@@ -266,7 +363,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
 
                    Padding(
-                     padding: const EdgeInsets.fromLTRB(70.0, 0, 50, 16),
+                     padding: const EdgeInsets.fromLTRB(70.0, 290, 50, 16),
                      child: Card(
 
                        shape: RoundedRectangleBorder(
@@ -276,13 +373,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                        elevation: 2,
                        color: Colors.black,
                        child: Padding(
-                         padding: const EdgeInsets.fromLTRB(60.0, 0, 60, 10),
+                         padding: const EdgeInsets.fromLTRB(60.0, 10, 60, 10),
                          child: Column(
                            children: [
                              Text(
                                'Rajiv Talreja',
                                style: TextStyle(
-                                 fontSize: 16,
+                                 fontSize: 20,
                                  color: Colors.white,
                                  fontWeight: FontWeight.bold,
                                ), //Textstyle
@@ -293,9 +390,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                              Text(
                                'Buisness Coach',
                                style: TextStyle(
-                                 fontSize: 14,
+                                 fontSize: 15,
                                  color: Colors.white,
-                                 //fontWeight: FontWeight.bold,
+                                 fontWeight: FontWeight.w400,
                                ), //Textstyle
                              ),
                              SizedBox(
@@ -305,8 +402,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                                'GDF-638',
                                style: TextStyle(
                                  fontSize: 12,
-                                 color: Colors.white54,
-                                 //fontWeight: FontWeight.bold,
+                                 color: Colors.white,
+                                 fontWeight: FontWeight.w300,
                                ), //Textstyle
                              ),
                            ],
@@ -315,120 +412,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                        ),
                      ),
                    ),
-                   //
-                   // Align(
-                   //   alignment: Alignment.bottomLeft,
-                   //   child: Container(
-                   //     //color: Colors.grey,
-                   //     padding: EdgeInsets.only(left: 20,bottom: 15,top: 430, right:20),
-                   //     child: Row(
-                   //
-                   //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   //       children: <Widget>[
-                   //     Column(
-                   //           children: <Widget>[
-                   //             Container(
-                   //               //color: Colors.grey,
-                   //               margin: EdgeInsets.all(0),
-                   //               padding: EdgeInsets.all(0),
-                   //               decoration: BoxDecoration(
-                   //                   borderRadius: BorderRadius.circular(100),
-                   //                   border: Border.all(width: 3, color: Colors.black12)),
-                   //               child:  IconButton(
-                   //                 //update the bottom app bar view each time an item is clicked
-                   //                   onPressed: () {
-                   //                     Navigator.push(
-                   //                       context,
-                   //                       MaterialPageRoute(builder: (context) =>  AllLeaveQuestion()),
-                   //                     );
-                   //                   },
-                   //                   iconSize: 27.0,
-                   //                   icon:  ImageIcon(
-                   //                     AssetImage("assets/question.png"),
-                   //                     size: 25,
-                   //                     color: Color(0xFF3A5A98),
-                   //                   )
-                   //               ),
-                   //             ),
-                   //             Text('LEAVE A ',
-                   //               style: TextStyle(fontSize: 12,),),
-                   //             Text('QUESTION',
-                   //               style: TextStyle(fontSize: 12,),),
-                   //
-                   //           ],
-                   //         ),
-                   //
-                   //
-                   //         Column(
-                   //           children: <Widget>[
-                   //             Container(
-                   //               //color: Colors.grey,
-                   //               margin: EdgeInsets.all(0),
-                   //               padding: EdgeInsets.all(0),
-                   //               decoration: BoxDecoration(
-                   //                   borderRadius: BorderRadius.circular(100),
-                   //                   border: Border.all(width: 3, color: Colors.black12)),
-                   //               child: IconButton(
-                   //               //update the bottom app bar view each time an item is clicked
-                   //                 onPressed: () {
-                   //                   Navigator.push(
-                   //                     context,
-                   //                     MaterialPageRoute(builder: (context) =>  ChatConsultationRating()),
-                   //                   );
-                   //                 },
-                   //                 iconSize: 27.0,
-                   //                 icon : Icon(Icons.chat,size: 20,color:Color(0xFF3A5A98))
-                   //               // icon:  ImageIcon(
-                   //               //   AssetImage("assets/chat.png"),
-                   //               //   size: 25,
-                   //               //   //color: Color(0xFF3A5A98),
-                   //               // )
-                   //             ),
-                   //             ),
-                   //             Text('CHAT ',
-                   //               style: TextStyle(fontSize: 12,),),
-                   //             Text(' CONSULTATION',
-                   //               style: TextStyle(fontSize: 12,),),
-                   //           ],
-                   //         ),
-                   //         Column(
-                   //           children: <Widget>[
-                   //             Container(
-                   //               //color: Colors.grey,
-                   //               margin: EdgeInsets.all(0),
-                   //               padding: EdgeInsets.all(0),
-                   //               decoration: BoxDecoration(
-                   //                   borderRadius: BorderRadius.circular(100),
-                   //                   border: Border.all(width: 3, color: Colors.black12)),
-                   //               child:  IconButton(
-                   //               //update the bottom app bar view each time an item is clicked
-                   //                 onPressed: () {
-                   //                   Navigator.push(
-                   //                     context,
-                   //                     MaterialPageRoute(builder: (context) =>  DirectBookAppointment()),
-                   //                   );
-                   //                 },
-                   //                 iconSize: 27.0,
-                   //                 icon : Icon(Icons.local_offer,size: 20,color:Color(0xFF3A5A98))
-                   //               // icon:  ImageIcon(
-                   //               //     AssetImage("assets/appointment.png"),
-                   //               //     size: 25,
-                   //               //     color: Color(0xFF3A5A98),
-                   //               //   )
-                   //             ),
-                   //             ),
-                   //
-                   //             Text('DIRECT ',
-                   //               style: TextStyle(fontSize: 12,),),
-                   //             Text(' APPOINTMENT',
-                   //               style: TextStyle(fontSize: 12,),),
-                   //           ],
-                   //         ),
-                   //         // Footer widgets
-                   //       ],
-                   //     ),
-                   //   ),
-                   // ),
 
 
 
@@ -442,124 +425,422 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
       ),
       ),
+
+
         bottomSheet: Container(
           padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-          color: Color(0xCCCCCCCC),
-          height: 100.0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          color: Color(0xffffffff),
+          height: 120.0,
+          child:Stack(
             children: <Widget>[
+
               Padding(
-                  padding: EdgeInsets.only(left: 10.0),
-                  child:     Column(
-                    children: <Widget>[
-                      Container(
-                        //color: Colors.grey,
-                        margin: EdgeInsets.all(0),
-                        padding: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(width: 3, color: Colors.white)),
-                        child:  IconButton(
-                          //update the bottom app bar view each time an item is clicked
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) =>  AllLeaveQuestion()),
-                              );
-                            },
-                            iconSize: 27.0,
-                            icon:  ImageIcon(
-                              AssetImage("assets/question.png"),
-                              size: 25,
-                              color: Colors.black,
-                            )
-                        ),
+                padding: const EdgeInsets.fromLTRB(0.0, 32, 0, 0),
+                child: Container(
+                  //  color: Colors.red,
+                  height: 80,
+                  child:Card(
+                      color: Color(0xcccccccc),
+                      elevation: 10,
+                      child: ListTile(
+
+                      )) ,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 0, 24, 10),
+                child:  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                      width: 70,
+                      height: 70,
+                        padding: const EdgeInsets.fromLTRB(5.0, 5, 5, 5),
+                      decoration: BoxDecoration(
+                        border: Border.all(  width: 8,color: Colors.white),
+                        // borderRadius: BorderRadius.all(
+                        //     Radius.circular(18.0) //                 <--- border radius here
+                        // ),
+                          color: Color(0xCCCCCCCC),
+                          shape: BoxShape.circle
                       ),
-                      SizedBox(height:5),
+
+                      child:IconButton(
+                        icon: Image.asset('assets/lc.png'),
+                        //iconSize: 150,
+                        onPressed: () {
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  AllLeaveQuestion()),
+                        );
+                        },
+                      )
+                    ),
+                      SizedBox(height: 3,),
                       Text('LEAVE A ',
-                        style: TextStyle(fontSize: 12,),),
-                      Text('QUESTION',
-                        style: TextStyle(fontSize: 12,),),
+                      style: TextStyle(fontSize: 8,fontWeight: FontWeight.w800),),
+                    Text(' QUESTION',
+                      style: TextStyle(fontSize: 8,fontWeight: FontWeight.w800),),
 
-                    ],
-                  ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(left: 10.0, right: 0.0),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        //color: Colors.grey,
-                        margin: EdgeInsets.all(0),
-                        padding: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(width: 3, color: Colors.white)),
-                        child: IconButton(
-                          //update the bottom app bar view each time an item is clicked
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) =>  ChatConsultationRating()),
-                              );
-                            },
-                            iconSize: 27.0,
-                            icon : Icon(Icons.chat,size: 20,color:Colors.black)
-                          // icon:  ImageIcon(
-                          //   AssetImage("assets/chat.png"),
-                          //   size: 25,
-                          //   //color: Color(0xFF3A5A98),
-                          // )
+                          ],
                         ),
-                      ),
-                      SizedBox(height:5),
-                      Text('CHAT ',
-                        style: TextStyle(fontSize: 12,),),
-                      Text(' CONSULTATION',
-                        style: TextStyle(fontSize: 12,),),
-                    ],
-                  ),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child:    Column(
-                    children: <Widget>[
-                      Container(
-                        //color: Colors.grey,
-                        margin: EdgeInsets.all(0),
-                        padding: EdgeInsets.all(0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(width: 3, color: Colors.white)),
-                        child:  IconButton(
-                          //update the bottom app bar view each time an item is clicked
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) =>  DirectBookAppointment()),
-                              );
-                            },
-                            iconSize: 27.0,
-                            icon : Icon(Icons.local_offer,size: 20,color:Colors.black)
-                          // icon:  ImageIcon(
-                          //     AssetImage("assets/appointment.png"),
-                          //     size: 25,
-                          //     color: Color(0xFF3A5A98),
-                          //   )
-                        ),
-                      ),
+                    ),
 
-                      Text('DIRECT ',
-                        style: TextStyle(fontSize: 12,),),
-                      Text(' APPOINTMENT',
-                        style: TextStyle(fontSize: 12,),),
-                    ],
-                  ),
-              )
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                              width: 70,
+                              height: 70,
+                              padding: const EdgeInsets.fromLTRB(5.0, 5, 5, 5),
+                              decoration: BoxDecoration(
+                                  border: Border.all(  width: 8,color: Colors.white),
+                                  // borderRadius: BorderRadius.all(
+                                  //     Radius.circular(18.0) //                 <--- border radius here
+                                  // ),
+                                  color: Color(0xCCCCCCCC),
+                                  shape: BoxShape.circle
+                              ),
+
+                              child:IconButton(
+                                icon: Image.asset('assets/cc.png'),
+                                //iconSize: 150,
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) =>  ChatConsultationRating()),
+                                  );
+                                },
+                              )
+                          ),
+                          SizedBox(height: 3,),
+                          Text('CHAT ',
+                            style: TextStyle(fontSize: 8,fontWeight: FontWeight.w800),),
+                          Text(' CONSULTATION',
+                            style: TextStyle(fontSize: 8,fontWeight: FontWeight.w800),),
+
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                              width: 70,
+                              height: 70,
+                              padding: const EdgeInsets.fromLTRB(5.0, 5, 5, 5),
+                              decoration: BoxDecoration(
+                                  border: Border.all(  width: 8,color: Colors.white),
+                                  // borderRadius: BorderRadius.all(
+                                  //     Radius.circular(18.0) //                 <--- border radius here
+                                  // ),
+                                  color: Color(0xCCCCCCCC),
+                                  shape: BoxShape.circle
+                              ),
+
+                              child:IconButton(
+                                icon: Image.asset('assets/direct.png'),
+                                //iconSize: 150,
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) =>  DirectBookAppointment()),
+                                  );
+                                },
+                              )
+                          ),
+                          SizedBox(height: 3,),
+                          Text('DIRECT',
+                            style: TextStyle(fontSize: 8,fontWeight: FontWeight.w800),),
+                          Text(' APPOINTMENT',
+                            style: TextStyle(fontSize: 8,fontWeight: FontWeight.w800),),
+
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+
+
+              ),
             ],
           ),
         ),
+
+
+
+
+
+
+
+
+  //       bottomSheet:
+  //       Container(
+  //         padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+  //         //color: Colors.white,
+  //         color: Color(0xCCCCCCCC),
+  //         height: 100.0,
+  //         child:   Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //           children: <Widget>[
+  //             Padding(
+  //                 padding: EdgeInsets.only(left: 10.0),
+  //                 child:     Column(
+  //                   children: <Widget>[
+  //                     Container(
+  //                       //color: Colors.grey,
+  //                       margin: EdgeInsets.all(0),
+  //                       padding: EdgeInsets.all(0),
+  //                       decoration: BoxDecoration(
+  //                           borderRadius: BorderRadius.circular(100),
+  //                           border: Border.all(width: 3, color: Colors.white)),
+  //                       child:  IconButton(
+  //                         //update the bottom app bar view each time an item is clicked
+  //                           onPressed: () {
+  //                             Navigator.push(
+  //                               context,
+  //                               MaterialPageRoute(builder: (context) =>  AllLeaveQuestion()),
+  //                             );
+  //                           },
+  //                           iconSize: 27.0,
+  //                           icon:  ImageIcon(
+  //                             AssetImage("assets/question.png"),
+  //                             size: 25,
+  //                             color: Colors.black,
+  //                           )
+  //                       ),
+  //                     ),
+  //                     SizedBox(height:5),
+  //                     Text('LEAVE A ',
+  //                       style: TextStyle(fontSize: 12,),),
+  //                     Text('QUESTION',
+  //                       style: TextStyle(fontSize: 12,),),
+  //
+  //                   ],
+  //                 ),
+  //             ),
+  //             Padding(
+  //                 padding: EdgeInsets.only(left: 10.0, right: 0.0),
+  //                 child: Column(
+  //                   children: <Widget>[
+  //                     Container(
+  //                       //color: Colors.grey,
+  //                       margin: EdgeInsets.all(0),
+  //                       padding: EdgeInsets.all(0),
+  //                       decoration: BoxDecoration(
+  //                           borderRadius: BorderRadius.circular(100),
+  //                           border: Border.all(width: 3, color: Colors.white)),
+  //                       child: IconButton(
+  //                         //update the bottom app bar view each time an item is clicked
+  //                           onPressed: () {
+  //                             Navigator.push(
+  //                               context,
+  //                               MaterialPageRoute(builder: (context) =>  ChatConsultationRating()),
+  //                             );
+  //                           },
+  //                           iconSize: 27.0,
+  //                           icon:  ImageIcon(
+  //                             AssetImage("assets/cc.png"),
+  //                             size: 25,
+  //                             color: Colors.black,
+  //                           )
+  //                       ),
+  //                     ),
+  //                     SizedBox(height:5),
+  //                     Text('CHAT ',
+  //                       style: TextStyle(fontSize: 12,),),
+  //                     Text(' CONSULTATION',
+  //                       style: TextStyle(fontSize: 12,),),
+  //                   ],
+  //                 ),
+  //             ),
+  //             Padding(
+  //                 padding: EdgeInsets.only(right: 10.0),
+  //                 child:    Column(
+  //                   children: <Widget>[
+  //                     Container(
+  //                       //color: Colors.grey,
+  //                       margin: EdgeInsets.all(0),
+  //                       padding: EdgeInsets.all(0),
+  //                       decoration: BoxDecoration(
+  //                           borderRadius: BorderRadius.circular(100),
+  //                           border: Border.all(width: 3, color: Colors.white)),
+  //                       child:  IconButton(
+  //                         //update the bottom app bar view each time an item is clicked
+  //                           onPressed: () {
+  //                             Navigator.push(
+  //                               context,
+  //                               MaterialPageRoute(builder: (context) =>  DirectBookAppointment()),
+  //                             );
+  //                           },
+  //                           iconSize: 27.0,
+  //                           //icon : Icon(Icons.local_offer,size: 25,color:Colors.black)
+  //                         icon:  ImageIcon(
+  //                             AssetImage("assets/direct.png"),
+  //                             size: 25,
+  //                             color: Colors.black,
+  //                           )
+  //                       ),
+  //                     ),
+  //
+  //                     Text('DIRECT ',
+  //                       style: TextStyle(fontSize: 12,),),
+  //                     Text(' APPOINTMENT',
+  //                       style: TextStyle(fontSize: 12,),),
+  //                   ],
+  //                 ),
+  //             )
+  //           ],
+  //         ),
+  //
+  // //         Stack(
+  // //           children: <Widget>[
+  // //
+  // //             Padding(
+  // //               padding: const EdgeInsets.fromLTRB(00, 25, 0, 8),
+  // //               child: Card(
+  // //               color: Colors.white,
+  // //                  // color: Color(0xCCCCCCCC),
+  // //
+  // //                   child: ListTile(
+  // //
+  // //                   )),
+  // //             ),
+  // // Padding(
+  // //               padding: const EdgeInsets.fromLTRB(0.0, 0, 0, 0),
+  // //               child: Card(
+  // //                color: Colors.transparent,
+  // //
+  // //                   child:   Row(
+  // //                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+  // //                   children: <Widget>[
+  // //                     Padding(
+  // //                         padding: EdgeInsets.only(left: 10.0),
+  // //                         child:     Column(
+  // //                           children: <Widget>[
+  // //                             Container(
+  // //                               //color: Colors.grey,
+  // //                               margin: EdgeInsets.all(0),
+  // //                               padding: EdgeInsets.all(0),
+  // //                               decoration: BoxDecoration(
+  // //                                   borderRadius: BorderRadius.circular(100),
+  // //                                   border: Border.all(width: 3, color: Colors.white)),
+  // //                               child:  IconButton(
+  // //                                 //update the bottom app bar view each time an item is clicked
+  // //                                   onPressed: () {
+  // //                                     Navigator.push(
+  // //                                       context,
+  // //                                       MaterialPageRoute(builder: (context) =>  AllLeaveQuestion()),
+  // //                                     );
+  // //                                   },
+  // //                                   iconSize: 27.0,
+  // //                                   icon:  ImageIcon(
+  // //                                     AssetImage("assets/question.png"),
+  // //                                     size: 25,
+  // //                                     color: Colors.black,
+  // //                                   )
+  // //                               ),
+  // //                             ),
+  // //                             SizedBox(height:5),
+  // //                             Text('LEAVE A ',
+  // //                               style: TextStyle(fontSize: 12,),),
+  // //                             Text('QUESTION',
+  // //                               style: TextStyle(fontSize: 12,),),
+  // //
+  // //                           ],
+  // //                         ),
+  // //                     ),
+  // //                     Padding(
+  // //                         padding: EdgeInsets.only(left: 10.0, right: 0.0),
+  // //                         child: Column(
+  // //                           children: <Widget>[
+  // //                             Container(
+  // //                               //color: Colors.grey,
+  // //                               margin: EdgeInsets.all(0),
+  // //                               padding: EdgeInsets.all(0),
+  // //                               decoration: BoxDecoration(
+  // //                                   borderRadius: BorderRadius.circular(100),
+  // //                                   border: Border.all(width: 3, color: Colors.white)),
+  // //                               child: IconButton(
+  // //                                 //update the bottom app bar view each time an item is clicked
+  // //                                   onPressed: () {
+  // //                                     Navigator.push(
+  // //                                       context,
+  // //                                       MaterialPageRoute(builder: (context) =>  ChatConsultationRating()),
+  // //                                     );
+  // //                                   },
+  // //                                   iconSize: 27.0,
+  // //                                   icon : Icon(Icons.chat,size: 20,color:Colors.black)
+  // //                                 // icon:  ImageIcon(
+  // //                                 //   AssetImage("assets/chat.png"),
+  // //                                 //   size: 25,
+  // //                                 //   //color: Color(0xFF3A5A98),
+  // //                                 // )
+  // //                               ),
+  // //                             ),
+  // //                             SizedBox(height:5),
+  // //                             Text('CHAT ',
+  // //                               style: TextStyle(fontSize: 12,),),
+  // //                             Text(' CONSULTATION',
+  // //                               style: TextStyle(fontSize: 12,),),
+  // //                           ],
+  // //                         ),
+  // //                     ),
+  // //                     Padding(
+  // //                         padding: EdgeInsets.only(right: 10.0),
+  // //                         child:    Column(
+  // //                           children: <Widget>[
+  // //                             Container(
+  // //                               //color: Colors.grey,
+  // //                               margin: EdgeInsets.all(0),
+  // //                               padding: EdgeInsets.all(0),
+  // //                               decoration: BoxDecoration(
+  // //                                   borderRadius: BorderRadius.circular(100),
+  // //                                   border: Border.all(width: 3, color: Colors.white)),
+  // //                               child:  IconButton(
+  // //                                 //update the bottom app bar view each time an item is clicked
+  // //                                   onPressed: () {
+  // //                                     Navigator.push(
+  // //                                       context,
+  // //                                       MaterialPageRoute(builder: (context) =>  DirectBookAppointment()),
+  // //                                     );
+  // //                                   },
+  // //                                   iconSize: 27.0,
+  // //                                   icon : Icon(Icons.local_offer,size: 20,color:Colors.black)
+  // //                                 // icon:  ImageIcon(
+  // //                                 //     AssetImage("assets/appointment.png"),
+  // //                                 //     size: 25,
+  // //                                 //     color: Color(0xFF3A5A98),
+  // //                                 //   )
+  // //                               ),
+  // //                             ),
+  // //
+  // //                             Text('DIRECT ',
+  // //                               style: TextStyle(fontSize: 12,),),
+  // //                             Text(' APPOINTMENT',
+  // //                               style: TextStyle(fontSize: 12,),),
+  // //                           ],
+  // //                         ),
+  // //                     )
+  // //                   ],
+  // //                 ),
+  // //               ),
+  // //             ),
+  // //
+  // //
+  // //           ],
+  // //         ),
+  //
+  //       ),
 
 
 

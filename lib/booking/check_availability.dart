@@ -149,7 +149,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
       Align(
         alignment: Alignment.centerLeft,
         child: Container(
-          padding: const EdgeInsets.fromLTRB(25, 10, 45, 05),
+          padding: const EdgeInsets.fromLTRB(25, 10, 25, 05),
           child: Text(
             "Select Date", style: TextStyle(
             fontSize: 12,
@@ -161,25 +161,33 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
       ),
       // Container(
       // width: 200.0,
-      Align(
-      alignment: Alignment.centerLeft,
-    child: Padding(
-    padding: const EdgeInsets.fromLTRB(25, 0, 45, 0),
-    child:  Container(
-    height: 32.0,
-  // color: Colors.white,
-    //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+          Padding(
+    padding: const EdgeInsets.fromLTRB(25, 10, 25, 5),
+    child:   Container(
+    padding: const EdgeInsets.fromLTRB(0, 5, 10, 5),
+    height: 40.0,
+    width:double.infinity,
     decoration: BoxDecoration(
-    //border: Border.all(color: Colors.black12, width: 1),
+    border: Border.all(color: Colors.black12, width: 1),
     borderRadius: BorderRadius.circular(10),
     color: Colors.white,
+
     //shape: BoxShape.circle,
     ),
-    child:TextField(
+    child: TextField(
      // readOnly: true,
       controller: dateController,
     decoration: InputDecoration(
-    hintText: 'CHOOSE YOUR PREFERRED DATE'
+    hintText: 'CHOOSE YOUR PREFERRED DATE',
+      hintStyle: TextStyle(fontSize: 10),
+      enabledBorder: const OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.white, width: 0.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(width: 1,color: Colors.transparent),
+      ),
+      suffixIcon: Icon(Icons.date_range, color: Colors.black,),
     ),
     onTap: () async {
     var date =  await showDatePicker(
@@ -192,7 +200,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
       ),
       ),
       ),
-      ),
+
 
 
       Align(
@@ -220,7 +228,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
             child:  Container(
               height: 32.0,
              // width:200,
-              //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black12, width: 1),
                 borderRadius: BorderRadius.circular(10),
@@ -234,7 +242,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
                 isExpanded: true,
                 iconSize: 26,
                 elevation: 10,
-                style: const TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.grey, fontSize: 10),
                 underline: Container(
                   height: 2,
                   color: Colors.transparent,
@@ -263,7 +271,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
             child:  Container(
               height: 32.0,
              // width:200,
-              //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black12, width: 1),
                 borderRadius: BorderRadius.circular(10),
@@ -277,7 +285,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
                 isExpanded: true,
                 iconSize: 26,
                 elevation: 10,
-                style: const TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.grey, fontSize: 10),
                 underline: Container(
                   height: 2,
                   color: Colors.transparent,
@@ -323,7 +331,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
           child:  Container(
             height: 32.0,
             // width:200,
-            //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12, width: 1),
               borderRadius: BorderRadius.circular(10),
@@ -337,7 +345,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
               isExpanded: true,
               iconSize: 26,
               elevation: 10,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.grey, fontSize: 10),
               underline: Container(
                 height: 2,
                 color: Colors.transparent,
@@ -380,7 +388,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
           child:  Container(
             height: 32.0,
             // width:200,
-            //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12, width: 1),
               borderRadius: BorderRadius.circular(10),
@@ -394,7 +402,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
               isExpanded: true,
               iconSize: 26,
               elevation: 10,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.grey, fontSize: 10),
               underline: Container(
                 height: 2,
                 color: Colors.transparent,
@@ -432,7 +440,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
               padding: const EdgeInsets.fromLTRB(15, 10, 45, 10),
               child: Text(
                 "Bringing Anyone With You ?", style: TextStyle(
-                fontSize: 15,
+                fontSize: 12,
                 color: Colors.black54,
                 //fontWeight: FontWeight.bold,
               ),
@@ -492,7 +500,7 @@ class _CheckStatefulWidgetState extends State<CheckStatefulWidget> {
       Align(
         alignment: Alignment.centerLeft,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(25, 10, 10, 10),
+          padding: const EdgeInsets.fromLTRB(25, 0, 10, 10),
           child:  Container(
            // color: Colors.white,
 
@@ -599,7 +607,7 @@ new Flexible(child:  Align(
     child:  Container(
       height: 32.0,
       // width:200,
-      //padding: const EdgeInsets.fromLTRB(10, 10, 10, 05),
+      padding: const EdgeInsets.fromLTRB(5, 0, 0, 0 ),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black12, width: 1),
         borderRadius: BorderRadius.circular(10),
@@ -613,7 +621,7 @@ new Flexible(child:  Align(
         isExpanded: true,
         iconSize: 26,
         elevation: 10,
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.grey, fontSize: 10),
         underline: Container(
           height: 2,
           color: Colors.transparent,
@@ -660,6 +668,9 @@ new Flexible(child:  Align(
               primary: Colors.black, // background
               onPrimary: Colors.white, // foreground
               padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+              ),
             ),
             onPressed: () {
 
